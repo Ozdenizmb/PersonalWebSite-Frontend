@@ -178,6 +178,13 @@ body{
 
 #home .imgContainer{
     transform: translateY(50px);
+    display: flex;
+    justify-content: center;
+}
+
+#home .my-pp {
+    height: 40vh;
+    width: auto;
 }
 
 #home .title{

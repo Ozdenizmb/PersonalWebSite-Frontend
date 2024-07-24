@@ -1,7 +1,7 @@
 // Home.js
 import React, { useEffect } from 'react';
 import './Home.css';
-import mountain0 from '../../images/mountain0.jpg';
+import myProfilePhoto from '../../images/myProfilePhoto.jpg';
 import mountain1 from '../../images/mountain1.png';
 import mountain2 from '../../images/mountain2.png';
 import mountain3 from '../../images/mountain3.png';
@@ -55,16 +55,8 @@ const Home = () => {
   return (
     <div id="home">
       <header>
-        <nav>
-          <div className="container">
-            <h3 className="logo">Brand<span>Name</span></h3>
-            <div className="hamburger-menu">
-              <div className="bar"></div>
-            </div>
-          </div>
-        </nav>
 
-        <h1 className="big-title translate" data-speed="0.1">Discover.</h1>
+        <h1 className="big-title translate" data-speed="0.1">Mehmet Baran Özdeniz</h1>
 
         <img src={person} className="person translate" data-speed="-0.25" alt="" />
         <img src={mountain1} className="mountain1 translate" data-speed="-0.2" alt="" />
@@ -79,14 +71,14 @@ const Home = () => {
         <div className="container">
           <div className="content opacity">
             <h3 className="title">
-              About
+              Hakkımda
               <div className="border"></div>
             </h3>
-            <p className="text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque officiis quos expedita ipsa, a quidem inventore voluptates debitis accusamus tenetur qui et voluptas dicta, culpa earum, doloribus odio consectetur consequuntur soluta quasi nobis! Deserunt voluptatum reiciendis iure expedita sequi quisquam laboriosam temporibus exercitationem.</p>
+            <p className="text">Yazılım mühendisliği alanında kendimi geliştirmek ve yeni teknolojileri öğrenmek konusunda büyük bir tutkum var. Java ve web programlama bilgimi projelerimde uygulayarak deneyim kazanıyorum. Öğrenmeye açık yapım sayesinde hızla uyum sağlıyor ve sürekli kendimi geliştiriyorum. 2024 yılında İstanbul Beykent Üniversitesi Yazılım Mühendisliği bölümünden mezun olarak kariyer yolculuğuma başladım ve amacım, öğrendiklerimi pratik projelerle pekiştirip yazılım dünyasına değer katmak ve yenilikleri takip etmeye devam etmektir.</p>
           </div>
 
           <div className="imgContainer opacity">
-            <img src={mountain0} alt="" />
+            <img className="my-pp" src={myProfilePhoto} alt="" />
           </div>
         </div>
       </section>
