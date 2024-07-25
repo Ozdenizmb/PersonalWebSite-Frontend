@@ -17,6 +17,7 @@ input {
   background-color: #fff;
   min-height: 100vh;
   overflow: hidden;
+  z-index: 25;
 }
 
 #signup .forms-container {

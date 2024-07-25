@@ -11,12 +11,17 @@ input {
   font-family: "Poppins", sans-serif;
 }
 
+#login {
+  margin-top: 2%;
+}
+
 #login .container {
   position: relative;
   width: 100%;
   background-color: #fff;
   min-height: 100vh;
   overflow: hidden;
+  z-index: 25;
 }
 
 #login .forms-container {
