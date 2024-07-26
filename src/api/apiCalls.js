@@ -10,7 +10,7 @@ export const signUpUser = (body) => {
 
 export const loginUser = creds => {
     const { email, password } = creds;
-    return axios.get(`/api/v1/User/Login?email=${email}&password=${password}`);
+    return axios.get(`/api/v1/users/login/user/${email}?password=${password}`);
 }
 
 export const getUser = () => {
@@ -25,9 +25,9 @@ export const signUpAdmin = (body, adminKey) => {
     });
 }
 
-export const loginAdmin = creds => {
-    const { email, password } = creds;
-    return axios.get(`/api/v1/Company/Login?email=${email}&password=${password}`);
+export const loginAdmin = (creds) => {
+    const { email, password, adminKey } = creds;
+    return axios.get(`/api/v1/users/login/admin/${email}?password=${password}`, {headers: {key: adminKey}});
 }
 
 export const getAdmin = () => {

@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
-import './SignUp.css';
+import { useDispatch } from 'react-redux';
+import { signUpAdminHandler, signUpUserHandler } from '../../redux/authActions';
 import image1 from '../../images/SignUpAndLoginImage1.svg';
 import image2 from '../../images/SignUpAndLoginImage2.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faFacebookF, faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faUser, faLock, faEnvelope, faAddressCard, faKey   } from '@fortawesome/free-solid-svg-icons';
-import { signUpAdminHandler, signUpUserHandler } from '../../redux/authActions';
-import { useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './SignUp.css';
 
 const Login = () => {
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [adminKey, setAdminKey] = useState();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [adminKey, setAdminKey] = useState("");
 
   const [error, setError] = useState(null);
 
@@ -70,10 +72,15 @@ const Login = () => {
     formData.append('userCreateDto', new Blob([JSON.stringify(body)], {type: 'application/json'}));
 
     try {
-      const response = await dispatch(signUpUserHandler(formData));
-      console.log(response);
+      await dispatch(signUpUserHandler(formData));
+      toast.success("Kayıt Başarıyla Gerşekleşti!");
+
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPassword("");
     } catch(error) {
-      setError("Error "+ error.response.data.status + ": " +error.response.data.detail);
+      setError("Error "+ error.response.data.status + ": " + error.response.data.detail);
     }
 
   }
@@ -92,10 +99,15 @@ const Login = () => {
     formData.append('userCreateDto', new Blob([JSON.stringify(body)], {type: 'application/json'}));
 
     try {
-      const response = await dispatch(signUpAdminHandler(formData, adminKey));
-      console.log(response);
+      await dispatch(signUpAdminHandler(formData, adminKey));
+      toast.success("Kayıt Başarıyla Gerşekleşti!");
+
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPassword("");
     } catch(error) {
-      setError("Error "+ error.response.data.status + ": " +error.response.data.detail);
+      setError("Error "+ error.response.data.status + ": " + error.response.data.detail);
     }
 
   }
@@ -111,25 +123,25 @@ const Login = () => {
                 <i className="fas fa-user">
                   <FontAwesomeIcon icon={faUser}/>
                 </i>
-                <input type="firstName" name="firstName" placeholder="Ad" onChange={onChange} />
+                <input type="firstName" name="firstName" placeholder="Ad" value={firstName} onChange={onChange} />
               </div>
               <div className="input-field">
                 <i className="fas fa-user">
                   <FontAwesomeIcon icon={faAddressCard}/>
                 </i>
-                <input type="lastName" name="lastName" placeholder="Soyad" onChange={onChange} />
+                <input type="lastName" name="lastName" placeholder="Soyad" value={lastName} onChange={onChange} />
               </div>
               <div className="input-field">
                 <i className="fas fa-envelope">
                   <FontAwesomeIcon icon={faEnvelope}/>
                 </i>
-                <input type="email" name="email" placeholder="Email" onChange={onChange} />
+                <input type="email" name="email" placeholder="Email" value={email} onChange={onChange} />
               </div>
               <div className="input-field">
                 <i className="fas fa-lock">
                 <FontAwesomeIcon icon={faLock}/>
                 </i>
-                <input type="password" name="password" placeholder="Şifre" onChange={onChange} />
+                <input type="password" name="password" placeholder="Şifre" value={password} onChange={onChange} />
               </div>
               <input href="#" type="submit" value="Kayıt Ol" className="btn-submit solid" onClick={onClickSubmitForUser} />
               <p className="social-text">Veya sosyal medya hesaplarınız ile kaydolun</p>
@@ -155,31 +167,31 @@ const Login = () => {
                 <i className="fas fa-user">
                   <FontAwesomeIcon icon={faUser}/>
                 </i>
-                <input type="firstName" name="firstName" placeholder="Ad" onChange={onChange} />
+                <input type="firstName" name="firstName" placeholder="Ad" value={firstName} onChange={onChange} />
               </div>
               <div className="input-field">
                 <i className="fas fa-user">
                   <FontAwesomeIcon icon={faAddressCard}/>
                 </i>
-                <input type="lastName" name="lastName" placeholder="Soyad" onChange={onChange} />
+                <input type="lastName" name="lastName" placeholder="Soyad" value={lastName} onChange={onChange} />
               </div>
               <div className="input-field">
                 <i className="fas fa-envelope">
                   <FontAwesomeIcon icon={faEnvelope}/>
                 </i>
-                <input type="email" name="email" placeholder="Email" onChange={onChange} />
+                <input type="email" name="email" placeholder="Email" value={email} onChange={onChange} />
               </div>
               <div className="input-field">
                 <i className="fas fa-lock">
                 <FontAwesomeIcon icon={faLock}/>
                 </i>
-                <input type="password" name="password" placeholder="Şifre" onChange={onChange} />
+                <input type="password" name="password" placeholder="Şifre" value={password} onChange={onChange} />
               </div>
               <div className="input-field">
                 <i className="fas fa-lock">
                 <FontAwesomeIcon icon={faKey}/>
                 </i>
-                <input type="password" name="adminKey" placeholder="Admin Anahtarı" onChange={onChange} />
+                <input type="password" name="adminKey" placeholder="Admin Anahtarı" value={adminKey} onChange={onChange} />
               </div>
               <input type="submit" className="btn-submit" value="Kayıt Ol" onClick={onClickSubmitForAdmin} />
               {error == null ? <label className="alert alert-info mt-2">Admin Olarak Kayıt Olmak İçin Anahtar Bilgisi Gerekmektedir!</label> :
@@ -215,6 +227,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

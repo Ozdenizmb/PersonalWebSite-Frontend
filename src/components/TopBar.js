@@ -1,15 +1,29 @@
 import React, { useState } from 'react';
-import '../style/Components.css';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
+import { logoutSuccess } from '../redux/authActions';
 import skyForTopbar from '../images/sky.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faInfoCircle, faProjectDiagram, faPhone, faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faInfoCircle, faProjectDiagram, faPhone, faSignInAlt, faUserPlus, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import '../style/Components.css';
+import ProfileImage from './ProfileImage';
 
 const TopBar = () => {
+    const { isLoggedIn, email, logoPath } = useSelector(store => ({
+        isLoggedIn: store.isLoggedIn,
+        email : store.email,
+        logoPath: store.logoPath
+    }));
+
     const [menuOpen, setMenuOpen] = useState(false);
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
+    };
+
+    const dispatch = useDispatch();
+    const onLogoutSuccess = () => {
+        dispatch(logoutSuccess());
     };
 
     return (
@@ -28,7 +42,7 @@ const TopBar = () => {
                 <img src={skyForTopbar} className="sky translate" data-speed="0.5" alt="" />
             </header>
             <div className={`side-menu ${menuOpen ? 'open' : ''}`}>
-                <ul>
+                <ul className="text-center">
                     <li>
                         <Link to="/"><FontAwesomeIcon icon={faHome} className="me-2" />Anasayfa</Link>
                     </li>
@@ -41,12 +55,29 @@ const TopBar = () => {
                     <li>
                         <Link to="/contact"><FontAwesomeIcon icon={faPhone} className="me-2" />İletişim</Link>
                     </li>
-                    <li>
-                        <Link to="/login"><FontAwesomeIcon icon={faSignInAlt} className="me-2" />Giriş Yap</Link>
-                    </li>
-                    <li>
-                        <Link to="/signup"><FontAwesomeIcon icon={faUserPlus} className="me-2" />Kaydol</Link>
-                    </li>
+                    {!isLoggedIn &&
+                        <div>
+                            <li>
+                                <Link to="/signup"><FontAwesomeIcon icon={faUserPlus} className="me-2" />Kaydol</Link>
+                            </li>
+                            <li>
+                                <Link to="/login"><FontAwesomeIcon icon={faSignInAlt} className="me-2" />Giriş Yap</Link>
+                            </li>
+                        </div>
+                    }
+                    {isLoggedIn &&
+                        <div className="d-flex align-items-center">
+                            <li>
+                                <Link to="/profile">
+                                    <ProfileImage email={email} width={"32"} height={"32"} tempImage={logoPath} imageCss="m-auto me-2" />
+                                    Profil
+                                </Link>
+                            </li>
+                            <li onClick={onLogoutSuccess}>
+                                <Link to="/"><FontAwesomeIcon icon={faSignOutAlt} className="me-2" />Çıkış Yap</Link>
+                            </li>
+                        </div>
+                    }
                 </ul>
             </div>
         </div>
