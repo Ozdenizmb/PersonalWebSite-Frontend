@@ -1,7 +1,11 @@
 import axios from "axios";
 
-export const signUpUser = body => {
-    return axios.post("/api/v1/User", body);
+export const signUpUser = (body) => {
+    return axios.post("/api/v1/users/signup/user", body, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
 }
 
 export const loginUser = creds => {
@@ -13,8 +17,12 @@ export const getUser = () => {
     return axios.get("/api/v1/User");
 }
 
-export const signUpAdmin = body => {
-    return axios.post("/api/v1/Company", body);
+export const signUpAdmin = (body, adminKey) => {
+    return axios.post("/api/v1/users/signup/admin", body, {headers: {key: adminKey}}, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
 }
 
 export const loginAdmin = creds => {

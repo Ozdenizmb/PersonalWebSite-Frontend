@@ -1,4 +1,4 @@
-import { signUpUser, loginUser, signUpCompany, loginCompany } from "../api/apiCalls";
+import { signUpUser, loginUser, signUpCompany, loginCompany, signUpAdmin } from "../api/apiCalls";
 
 export const logoutSuccess = () => {
     return {
@@ -26,6 +26,13 @@ export const updateUserSuccess = ({ name, surname, password, logo_path }) => {
     }
 }
 
+export const signUpUserHandler = (user) => {
+    return async function() {
+        const response = await signUpUser(user);
+        return response
+    }
+}
+
 export const loginUserHandler = (creds) => {
     return async function(dispatch) {
         const response = await loginUser(creds);
@@ -44,9 +51,9 @@ export const loginUserHandler = (creds) => {
     }
 }
 
-export const signUpUserHandler = (user) => {
-    return async function(dispatch) {
-        const response = await signUpUser(user);
-        return response
+export const signUpAdminHandler = (admin, adminKey) => {
+    return async function() {
+        const response = await signUpAdmin(admin, adminKey);
+        return response;
     }
 }

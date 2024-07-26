@@ -11,6 +11,11 @@ input {
   font-family: "Poppins", sans-serif;
 }
 
+#signup {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
 #signup .container {
   position: relative;
   width: 100%;

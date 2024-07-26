@@ -25,15 +25,19 @@ const Login = () => {
                 <form action="#" className="sign-in-form">
                     <h2 className="title">Kullanıcı Olarak Giriş Yap</h2>
                     <div className="input-field">
-                    <i className="fas fa-user"></i>
-                    <input type="text" placeholder="Username" />
+                    <i className="fas fa-envelope">
+                        <FontAwesomeIcon icon={faEnvelope}/>
+                    </i>
+                    <input type="text" placeholder="Email" />
                     </div>
                     <div className="input-field">
-                    <i className="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" />
+                    <i className="fas fa-lock">
+                    <FontAwesomeIcon icon={faLock}/>
+                    </i>
+                    <input type="password" placeholder="Şifre" />
                     </div>
-                    <input type="submit" value="Login" className="btn solid" />
-                    <p className="social-text">Or Sign in with social platforms</p>
+                    <input type="submit" value="Giriş Yap" className="btn solid" />
+                    <p className="social-text">Veya sosyal medya hesaplarınız ile giriş yapın</p>
                     <div className="social-media">
                     <a href="#" className="social-icon">
                         <FontAwesomeIcon icon={faGoogle}/>
@@ -52,18 +56,6 @@ const Login = () => {
                 <form action="#" className="sign-up-form">
                     <h2 className="title">Admin Olarak Giriş Yap</h2>
                     <div className="input-field">
-                    <i className="fas fa-user">
-                        <FontAwesomeIcon icon={faUser}/>
-                    </i>
-                    <input type="text" placeholder="Ad" />
-                    </div>
-                    <div className="input-field">
-                    <i className="fas fa-user">
-                        <FontAwesomeIcon icon={faAddressCard}/>
-                    </i>
-                    <input type="text" placeholder="Soyad" />
-                    </div>
-                    <div className="input-field">
                     <i className="fas fa-envelope">
                         <FontAwesomeIcon icon={faEnvelope}/>
                     </i>
@@ -75,8 +67,8 @@ const Login = () => {
                     </i>
                     <input type="password" placeholder="Şifre" />
                     </div>
-                    <input type="submit" className="btn-submit" value="Sign up" />
-                    <p className="social-text">Or Sign up with social platforms</p>
+                    <input type="submit" className="btn-submit" value="Giriş Yap" />
+                    <p className="social-text">Veya sosyal medya hesaplarınız ile giriş yapın</p>
                     <div className="social-media">
                     <a href="#" className="social-icon">
                         <FontAwesomeIcon icon={faGoogle}/>
