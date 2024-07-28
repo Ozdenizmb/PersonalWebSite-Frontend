@@ -11,6 +11,7 @@ import TopBar from './components/TopBar';
 import Contact from './views/Contact/Contact'
 import UserPage from './views/UserPage/UserPage';
 import Login from './views/Login/Login';
+import UserUpdateProfile from './components/UserUpdateProfile';
 
 const App = () => {
 
@@ -41,6 +42,8 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
 
           <Route path="/profile/:email" element={<UserPage />} />
+
+          <Route path="/profile/update/:email" element={<UserUpdateProfile />} />
 
           <Route path="/" element={<Navigate to="/home" />} />
         </Routes>

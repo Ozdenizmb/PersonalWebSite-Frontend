@@ -68,7 +68,7 @@ const TopBar = () => {
                     {isLoggedIn &&
                         <div className="d-flex align-items-center">
                             <li>
-                                <Link to="/profile">
+                                <Link to={`/profile/${email}`}>
                                     <ProfileImage email={email} width={"32"} height={"32"} tempImage={logoPath} imageCss="m-auto me-2" />
                                     Profil
                                 </Link>

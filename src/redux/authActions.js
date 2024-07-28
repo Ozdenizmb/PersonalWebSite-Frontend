@@ -1,4 +1,4 @@
-import { signUpUser, loginUser, signUpCompany, loginCompany, signUpAdmin, loginAdmin } from "../api/apiCalls";
+import { signUpUser, loginUser, signUpAdmin, loginAdmin } from "../api/apiCalls";
 
 export const logoutSuccess = () => {
     return {
@@ -14,14 +14,14 @@ export const loginUserSuccess = (loginData) => {
     }
 }
 
-export const updateUserSuccess = ({ name, surname, password, logo_path }) => {
+export const updateUserSuccess = ({ firstName, lastName, password, imageUrl }) => {
     return {
         type : 'update-user-success',
         data : {
-            name,
-            surname,
+            firstName,
+            lastName,
             password,
-            logoPath: logo_path
+            imageUrl
         }
     }
 }

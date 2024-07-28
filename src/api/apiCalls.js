@@ -13,10 +13,6 @@ export const loginUser = creds => {
     return axios.get(`/api/v1/users/login/user/${email}?password=${password}`);
 }
 
-export const getUser = () => {
-    return axios.get("/api/v1/User");
-}
-
 export const signUpAdmin = (body, adminKey) => {
     return axios.post("/api/v1/users/signup/admin", body, {headers: {key: adminKey}}, {
         headers: {
@@ -30,8 +26,8 @@ export const loginAdmin = (creds) => {
     return axios.get(`/api/v1/users/login/admin/${email}?password=${password}`, {headers: {key: adminKey}});
 }
 
-export const getAdmin = () => {
-    return axios.get("/api/v1/Company");
+export const getUserAndAdmin = (email) => {
+    return axios.get(`/api/v1/users/get/email/${email}`);
 }
 
 export const setAuthorizationHeader = (userData) => {
@@ -46,3 +42,11 @@ export const setAuthorizationHeader = (userData) => {
         delete axios.defaults.headers['Authorization'];
     }
 };
+
+export const updateUser = (id, form) => {
+    return axios.put(`/api/v1/users/update/user/${id}`, form);
+}
+
+export const updateAdmin = (id, form, adminKey) => {
+    return axios.put(`/api/v1/users/update/admin/${id}`, form, {headers: {key: adminKey}});
+}

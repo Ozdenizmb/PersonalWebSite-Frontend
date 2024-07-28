@@ -58,7 +58,7 @@ const Login = () => {
 
         try{
             await dispatch(loginUserHandler(creds));
-            //navigate("/");
+            navigate("/");
         } catch(error) {
             setError("Error "+ error.response.data.status + ": " + error.response.data.detail);
         }
@@ -75,7 +75,7 @@ const Login = () => {
 
         try {
             await dispatch(loginAdminHandler(creds));
-            //navigate("/");
+            navigate("/");
         } catch(error) {
             setError("Error "+ error.response.data.status + ": " + error.response.data.detail);
         }
