@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBProgress, MDBProgressBar, MDBIcon, MDBListGroup, MDBListGroupItem } from 'mdb-react-ui-kit';
 import { getUserAndAdmin } from '../../api/apiCalls';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
 import profile from '../../images/profile.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus, faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
+import { logoutSuccess } from '../../redux/authActions';
+import { useDispatch } from 'react-redux';
 
 const UserPage = () => {
 
@@ -13,6 +15,8 @@ const UserPage = () => {
     const [userNotFound, setUserNotFound] = useState(false);
 
     const { email } = useParams();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         loadUser(email);
@@ -30,7 +34,8 @@ const UserPage = () => {
     }
 
     const onClickLogout = () => {
-
+        dispatch(logoutSuccess());
+        navigate("/");
     }
 
     const formatDate = (dateString) => {

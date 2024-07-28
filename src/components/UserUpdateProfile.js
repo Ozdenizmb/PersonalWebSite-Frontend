@@ -9,7 +9,6 @@ import { useApiProgress } from '../shared/ApiProgress';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { updateUserSuccess } from '../redux/authActions';
-import { ToastContainer, toast } from 'react-toastify';
 
 const UserUpdateProfile = () => {
 
@@ -197,7 +196,6 @@ const UserUpdateProfile = () => {
 
                 </div>
             </div>
-            <ToastContainer />
         </div>
     );
 }

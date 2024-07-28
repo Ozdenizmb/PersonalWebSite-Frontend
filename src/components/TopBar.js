@@ -9,10 +9,10 @@ import '../style/Components.css';
 import ProfileImage from './ProfileImage';
 
 const TopBar = () => {
-    const { isLoggedIn, email, logoPath } = useSelector(store => ({
+    const { isLoggedIn, email, imageUrl } = useSelector(store => ({
         isLoggedIn: store.isLoggedIn,
         email : store.email,
-        logoPath: store.logoPath
+        imageUrl: store.imageUrl
     }));
 
     const [menuOpen, setMenuOpen] = useState(false);
@@ -69,7 +69,7 @@ const TopBar = () => {
                         <div className="d-flex align-items-center">
                             <li>
                                 <Link to={`/profile/${email}`}>
-                                    <ProfileImage email={email} width={"32"} height={"32"} tempImage={logoPath} imageCss="m-auto me-2" />
+                                    <ProfileImage email={email} width={"32"} height={"32"} tempImage={imageUrl} imageCss="m-auto me-2" />
                                     Profil
                                 </Link>
                             </li>
