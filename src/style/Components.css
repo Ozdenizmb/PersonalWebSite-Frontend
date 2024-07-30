@@ -89,7 +89,6 @@
     border-radius: 2px;
     width: 100%;
     height: 3px;
-    transition: all 0.3s ease-in-out;
 }
 
 #topbar .bar:before, .bar:after{
@@ -100,6 +99,15 @@
     right: 0;
     background-color: #fff;
     border-radius: 2px;
+}
+
+#topbar .hamburger-menu:hover .bar {
+    background-color: green;
+}
+
+#topbar .hamburger-menu:hover .bar:before,
+#topbar .hamburger-menu:hover .bar:after {
+    background-color: green;
 }
 
 #topbar .bar:before{

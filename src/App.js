@@ -12,6 +12,7 @@ import Contact from './views/Contact/Contact'
 import UserPage from './views/UserPage/UserPage';
 import Login from './views/Login/Login';
 import UserUpdateProfile from './components/UserUpdateProfile';
+import Project from './views/Project/Project';
 
 const App = () => {
 
@@ -38,6 +39,8 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
 
           <Route path="/about" element={<About />} />
+
+          <Route path="/projects" element={<Project />} />
 
           <Route path="/contact" element={<Contact />} />
 

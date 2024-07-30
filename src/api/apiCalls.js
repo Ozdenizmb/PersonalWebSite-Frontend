@@ -50,3 +50,7 @@ export const updateUser = (id, form) => {
 export const updateAdmin = (id, form, adminKey) => {
     return axios.put(`/api/v1/users/update/admin/${id}`, form, {headers: {key: adminKey}});
 }
+
+export const getProjectCount = () => {
+    return axios.get("/api/v1/projects/get/count");
+}

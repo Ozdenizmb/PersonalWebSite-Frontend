@@ -7,8 +7,19 @@ import mountain2 from '../../images/mountain2.png';
 import mountain3 from '../../images/mountain3.png';
 import person from '../../images/person.png';
 import sky from '../../images/sky.png';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+
+  const navigate = useNavigate();
+
+  const onClickButton = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      navigate("/about");
+    }, 700);
+  }
+
   useEffect(() => {
     const translate = document.querySelectorAll(".translate");
     const big_title = document.querySelector(".big-title");
@@ -75,6 +86,9 @@ const Home = () => {
               <div className="border"></div>
             </h3>
             <p className="text">Yazılım mühendisliği alanında kendimi geliştirmek ve yeni teknolojileri öğrenmek konusunda büyük bir tutkum var. Java ve web programlama bilgimi projelerimde uygulayarak deneyim kazanıyorum. Öğrenmeye açık yapım sayesinde hızla uyum sağlıyor ve sürekli kendimi geliştiriyorum. 2024 yılında İstanbul Beykent Üniversitesi Yazılım Mühendisliği bölümünden mezun olarak kariyer yolculuğuma başladım ve amacım, öğrendiklerimi pratik projelerle pekiştirip yazılım dünyasına değer katmak ve yenilikleri takip etmeye devam etmektir.</p>
+            <div class="d-grid gap-2">
+              <button class="btn btn-light mt-2" type="button" onClick={onClickButton}>Daha Fazla</button>
+            </div>
           </div>
 
           <div className="imgContainer opacity">

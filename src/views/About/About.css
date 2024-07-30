@@ -1,0 +1,179 @@
+/* skillls*/
+
+#about #about_a .skills {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+#about #about_a .skills i {
+    color: #EF6D6D;
+    padding-bottom: .5rem;
+}
+
+/* profile */
+
+#about #about_b .profile {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+#about #about_b .profile div { 
+    padding: 3rem 0;
+}
+
+#about #about_b .profile div .title {
+    font-size: 1.5rem;
+}
+
+#about #about_b .profile div .number {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* working process */
+
+#about #about_c .process {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+}
+
+#about #about_c .process .process_icon {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    color: #fff;
+    background-color: #333;
+    padding: 2rem;
+    border-radius: 50%;
+    text-align: center;
+}
+
+#about #about_c .process .process_icon:hover {
+    background-color: #EF6D6D;;
+}
+
+#about .container {
+    max-width: 1200px;
+    padding: 0 1.4rem;
+    margin: auto;
+}
+
+#about .bg-light {
+    background-color: #f4f4f4;
+}
+#about .bg-medium {
+    background-color: #ccc;
+}
+
+#about .py-2 {
+    padding: 2rem 0;
+}
+
+#about .my-1 { margin: 1rem 0; }
+#about .my-2 { margin: 2rem 0; }
+#about .my-3 { margin: 3rem 0; }
+#about .my-4 { margin: 4.2rem 0; }
+
+#about .text-center {
+    text-align: center;
+}
+
+#about .section-title {
+    font-size: 2rem;
+    padding-bottom: 1rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#about .border-bottom {
+    height: 3px;
+    width: 3rem;
+    background-color: #EF6D6D;
+    margin: 0 auto 1rem auto;
+}
+
+#about .lead {
+    font-size: 1.4rem;
+    word-spacing: 2px;
+    margin-bottom: 2rem;
+}
+
+#about a {
+    text-decoration: none;
+    color: #333;
+}
+
+#about ul {
+    list-style: none;
+}
+
+#about img {
+    width: 100%;
+}
+
+#about {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    background-color: #fff;
+    font-family: 'Prompt', sans-serif;
+    line-height: 1.5;
+}
+
+#about #about_b {
+    margin-top: 10vh !important;
+    margin-bottom: 10vh !important;
+}
+
+/* tablets */
+@media (max-width: 768px) {
+
+    #about #about_a .skills {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #about #about_b .profile {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #about #about_c .process {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+
+    #about #about_a .skills {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    #about #about_a .skills div {
+        border-bottom: 1px solid var(--light-color);
+        padding-bottom: 1rem;
+    }
+
+    #about #about_a .skills div:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    #about #about_b .profile {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    #about .lead {
+        font-size: 1rem;
+        word-spacing: 1px;
+        margin-bottom: 1.2rem;
+    }
+
+    #about #about_c .process .process_icon {
+        width: 50px;
+        height: 50px;
+        padding: 1.5rem;
+    }
+}

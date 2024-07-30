@@ -50,7 +50,7 @@ const TopBar = () => {
                         <Link to="/about"><FontAwesomeIcon icon={faInfoCircle} className="me-2" />Hakkımda</Link>
                     </li>
                     <li>
-                        <Link to="#services"><FontAwesomeIcon icon={faProjectDiagram} className="me-2" />Projeler</Link>
+                        <Link to="/projects"><FontAwesomeIcon icon={faProjectDiagram} className="me-2" />Projeler</Link>
                     </li>
                     <li>
                         <Link to="/contact"><FontAwesomeIcon icon={faPhone} className="me-2" />İletişim</Link>
