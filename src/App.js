@@ -13,6 +13,7 @@ import UserPage from './views/UserPage/UserPage';
 import Login from './views/Login/Login';
 import UserUpdateProfile from './components/UserUpdateProfile';
 import Project from './views/Project/Project';
+import ProjectDetail from './views/ProjectDetail/ProjectDetail';
 
 const App = () => {
 
@@ -47,6 +48,8 @@ const App = () => {
           <Route path="/profile/:email" element={<UserPage />} />
 
           <Route path="/profile/update/:email" element={<UserUpdateProfile />} />
+
+          <Route path="/projectdetail/:id" element={<ProjectDetail />} />
 
           <Route path="/" element={<Navigate to="/home" />} />
         </Routes>
