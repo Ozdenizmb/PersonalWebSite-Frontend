@@ -102,12 +102,12 @@
 }
 
 #topbar .hamburger-menu:hover .bar {
-    background-color: green;
+    background-color: black;
 }
 
 #topbar .hamburger-menu:hover .bar:before,
 #topbar .hamburger-menu:hover .bar:after {
-    background-color: green;
+    background-color: black;
 }
 
 #topbar .bar:before{
@@ -159,4 +159,46 @@
 #topbar .side-menu ul li a:hover {
     background-color: #fff;
     color: black;
+}
+
+#card-feed .row {
+    --bs-gutter-x: 0;
+}
+
+#project-card .my-card {
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 10px 10px 40px rgba(52, 58, 64, 0.1);
+
+    position: relative;
+    bottom: 0px;
+    transition: all .6s;
+}
+
+#project-card .my-card:hover {
+    bottom: 10px;
+}
+
+.card_padding {
+    padding: 10px;
+}
+
+.card-for-job .image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-for-job .image-container img {
+    height: 300px;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.card-for-job .image-container-for-company img {
+    width: 12rem;
+    height: 9rem;
+    object-fit: cover;
 }

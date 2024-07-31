@@ -54,3 +54,7 @@ export const updateAdmin = (id, form, adminKey) => {
 export const getProjectCount = () => {
     return axios.get("/api/v1/projects/get/count");
 }
+
+export const getAllProjects = (pageNumber, pageSize, sort) => {
+    return axios.get(`/api/v1/projects/get?page=${pageNumber}&size=${pageSize}&sort=${sort}`);
+}
