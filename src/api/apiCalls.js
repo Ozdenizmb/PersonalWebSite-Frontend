@@ -59,6 +59,6 @@ export const getAllProjects = (pageNumber, pageSize, sort) => {
     return axios.get(`/api/v1/projects/get?page=${pageNumber}&size=${pageSize}&sort=${sort}`);
 }
 
-export const createContact = () => {
-    
+export const createContact = (body) => {
+    return axios.post("/api/v1/contacts/create", body);
 }
