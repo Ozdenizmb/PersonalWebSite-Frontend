@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import './About.css';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faJava, faGithub, faLinkedin, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF, faTwitter, faLinkedin, faInstagram, faJava, faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faHashtag, faCode, faDatabase, faBuildingColumns, faBriefcase, faUsers, faAward } from '@fortawesome/free-solid-svg-icons';
-import { getProjectCount } from '../../api/apiCalls';
+import './About.css';
+import myProfilePhoto from '../../images/myProfilePhoto.jpg';
+import { getProjectCount } from "../../api/apiCalls";
 
 const About = () => {
 
@@ -26,15 +28,46 @@ const About = () => {
     }
 
     return (
-        <div id="about">
-            <section id="about_a" class="text-center py-2 my-4">
+        <div id="aboutn">
+            <div className="about-wrapper">
+                <div className="about-left">
+                    <div className="about-left-content">
+                    <div>
+                        <div className="shadow">
+                        <div className="about-img">
+                            <img src={myProfilePhoto} alt="about image" />
+                        </div>
+                        </div>
+            
+                        <h2>Mehmet Baran<br />Özdeniz</h2>
+                        <h3>Software Engineer</h3>
+                    </div>
+            
+                    <ul className="icons">
+                        <li><FontAwesomeIcon icon={faFacebookF} /></li>
+                        <li><FontAwesomeIcon icon={faTwitter} /></li>
+                        <li><FontAwesomeIcon icon={faLinkedin} /></li>
+                        <li><FontAwesomeIcon icon={faInstagram} /></li>
+                    </ul>
+                    </div>
+                </div>
+            
+                <div className="about-right">
+                    <h1>Merhaba<span>!</span></h1>
+                    <h2>İşte ben kimim ve ne yapıyorum</h2>
+                    <div className="about-btns">
+                    <button type="button" className="btn btn-pink">CV</button>
+                    <button type="button" className="btn btn-white">Projeler</button>
+                    </div>
+            
+                    <div className="about-para">
+                    <p>Yazılım mühendisliği alanında kendimi geliştirmeye ve yeni teknolojileri öğrenmeye büyük bir ilgi duyuyorum. Java ve Web Programlama konularında edindiğim bilgileri ve deneyimleri projelerime yansıtıyorum. Yazılım geliştirme sürecine olan tutkum, yeni beceriler kazanmama ve bu becerileri projelerde uygulamama yardımcı oluyor. Öğrenmeye açık bir yapıya sahip olduğum için hızla uyum sağlayabiliyor ve kendimi sürekli olarak geliştirebiliyorum.</p>
+                    <p>Amacım, öğrendiklerimi pratik projelerle pekiştirerek değer katmak ve yazılım dünyasındaki yenilikleri takip etmeye devam etmektir. Yeniliklere açık ve sürekli öğrenmeye istekli biriyim.</p>
+                    </div>
+                </div>
+            </div>
+            <section id="about_a" class="text-center py-2 my-5">
                 <div class="container">
-                    <h2 class="section-title">Introduction</h2>
-                    <div class="border-bottom"></div>
-                    <p class="lead">
-                    Yazılım mühendisliği alanında kendimi geliştirmeye ve yeni teknolojileri öğrenmeye büyük bir ilgi duyuyorum. Java ve Web Programlama konularında edindiğim bilgileri ve deneyimleri projelerime yansıtıyorum. Yazılım geliştirme sürecine olan tutkum, yeni beceriler kazanmama ve bu becerileri projelerde uygulamama yardımcı oluyor. Öğrenmeye açık bir yapıya sahip olduğum için hızla uyum sağlayabiliyor ve kendimi sürekli olarak geliştirebiliyorum. Amacım, öğrendiklerimi pratik projelerle pekiştirerek değer katmak ve yazılım dünyasındaki yenilikleri takip etmeye devam etmektir. Yeniliklere açık ve sürekli öğrenmeye istekli biriyim.
-                    </p>
-
                     <div class="skills my-3">
                         <div>
                             <FontAwesomeIcon icon={faJava} className="fa-5x text-danger"/>
@@ -54,12 +87,12 @@ const About = () => {
                         <div>
                             <FontAwesomeIcon icon={faDatabase} className="fa-5x text-danger"/>
                             <h3>Databases</h3>
-                            <p>Çalışmalarımda PostgreSql veritabanını kullanmaktayım.</p>
+                                <p>Çalışmalarımda PostgreSql veritabanını kullanmaktayım.</p>
                         </div>
                     </div>
                 </div>
 
-                <p class="lead">
+                <p class="lead mt-5">
                     Bunların yanı sıra FlyWay, Hazelcast, Amazon S3, Cloudfront gibi daha birçok teknolojiyi kullanarak projeler üretmekte ve her geçen gün yeni teknolojiler öğrenerek kendimi geliştirmeye devam etmekteyim. Günümüzün uçsuz bucaksız veri yığını arasında "Her gün yeni bir bilgi" mottosu ile kariyerime devam etmekteyim.
                 </p>
             </section>
@@ -103,46 +136,8 @@ const About = () => {
                     </div>
                 </div>
             </section>
-
-            <section id="about_c" class="text-center py-2 my-2">
-                <div class="container">
-
-                    <h2 class="section-title">Bağlantı Adreslerim</h2>
-                    <div class="border-bottom"></div>
-                    <p class="lead">
-                        Aşağıdaki linklerden bana ulaşabilirsiniz. Doğrudan iletişim için lütfen 'İletişim' sayfasını ziyaret edin.
-                    </p>
-
-                    <div class="process">
-                        <a href="https://www.linkedin.com/in/mehmet-baran-%C3%B6zdeniz-465366262" target="_blank">
-                            <div>
-                                <FontAwesomeIcon icon={faLinkedin} className="process_icon fa-2x my-1"/>
-                                <h3>LinkedIn</h3>
-                            </div>
-                        </a>
-                        <a href="https://github.com/Ozdenizmb" target="_blank">
-                            <div>
-                                <FontAwesomeIcon icon={faGithub} className="process_icon fa-2x my-1"/>
-                                <h3>GitHub</h3>
-                            </div>
-                        </a>
-                        <a href="https://www.instagram.com/ozdeniz.mb/" target="_blank">
-                            <div>
-                                <FontAwesomeIcon icon={faInstagram} className="process_icon fa-2x my-1"/>
-                                <h3>Instagram</h3>
-                            </div>
-                        </a>
-                        <a href="https://www.youtube.com/channel/UCQG1TneF8TO1oC2WS6WLKeA" target="_blank">
-                            <div>
-                                <FontAwesomeIcon icon={faYoutube} className="process_icon fa-2x my-1"/>
-                                <h3>YouTube</h3>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </section>
         </div>
     );
 }
- 
+
 export default About;
