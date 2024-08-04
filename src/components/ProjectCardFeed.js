@@ -79,7 +79,6 @@ const ProjectCardFeed = () => {
                 </button>
             </div>
         </div>
-        
     );
 }
 

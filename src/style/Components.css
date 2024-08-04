@@ -183,22 +183,3 @@
 .card_padding {
     padding: 10px;
 }
-
-.card-for-job .image-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.card-for-job .image-container img {
-    height: 300px;
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: cover;
-}
-
-.card-for-job .image-container-for-company img {
-    width: 12rem;
-    height: 9rem;
-    object-fit: cover;
-}

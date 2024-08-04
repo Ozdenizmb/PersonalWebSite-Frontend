@@ -58,3 +58,7 @@ export const getProjectCount = () => {
 export const getAllProjects = (pageNumber, pageSize, sort) => {
     return axios.get(`/api/v1/projects/get?page=${pageNumber}&size=${pageSize}&sort=${sort}`);
 }
+
+export const createContact = () => {
+    
+}
