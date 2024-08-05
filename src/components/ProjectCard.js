@@ -1,4 +1,5 @@
 import React from "react";
+import '../style/Components.css';
 import { Link } from "react-router-dom";
 
 const ProjectCard = ({ project }) => {
@@ -8,7 +9,7 @@ const ProjectCard = ({ project }) => {
     let cardType = (
         <div id="project-card">
             <div className="card h-100 border rounded-3 shadow my-card">
-                <Link to={`/projectdetail/${project.id}`} className="card-link nav-link">
+                <Link to={`/project/detail/${project.id}`} className="card-link nav-link">
                     <div className="image-container">
                     <img src={project.imageUrl} className="card-img-top rounded-2 img-fluid" alt={project.name} />
                     </div>
@@ -27,7 +28,7 @@ const ProjectCard = ({ project }) => {
     )
 
     return(
-        <div className={`mb-4 card_padding card-for-job ${numberOfCard}`}>
+        <div className={`mb-4 card_padding card-for-project ${numberOfCard}`}>
             {cardType}
         </div>
     );

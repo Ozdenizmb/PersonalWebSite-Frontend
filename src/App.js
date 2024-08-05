@@ -15,6 +15,8 @@ import UserUpdateProfile from './components/UserUpdateProfile';
 import Project from './views/Project/Project';
 import ProjectDetail from './views/ProjectDetail/ProjectDetail';
 import Footer from './components/Footer';
+import ProjectCreate from './components/ProjectCreate';
+import ContactMessage from './components/ContactMessage';
 
 const App = () => {
 
@@ -46,11 +48,15 @@ const App = () => {
 
           <Route path="/contact" element={<Contact />} />
 
+          <Route path="/contact/message" element={<ContactMessage />} />
+
           <Route path="/profile/:email" element={<UserPage />} />
 
           <Route path="/profile/update/:email" element={<UserUpdateProfile />} />
 
-          <Route path="/projectdetail/:id" element={<ProjectDetail />} />
+          <Route path="/project/detail/:id" element={<ProjectDetail />} />
+
+          <Route path="/project/create" element={<ProjectCreate />} />
 
           <Route path="/" element={<Navigate to="/home" />} />
         </Routes>

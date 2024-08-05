@@ -5,14 +5,18 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
 import profile from '../../images/profile.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarPlus, faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarPlus, faCalendarCheck, faClipboard, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { logoutSuccess } from '../../redux/authActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const UserPage = () => {
 
     const [user, setUser] = useState({});
     const [userNotFound, setUserNotFound] = useState(false);
+
+    const { role } = useSelector((store) => ({
+        role: store.role
+    }));
 
     const { email } = useParams();
     const dispatch = useDispatch();
@@ -110,6 +114,28 @@ const UserPage = () => {
                             </MDBIcon>
                             <MDBCardText>{formatDate(user.updatedDate)}</MDBCardText>
                         </MDBListGroupItem>
+                        {(role === "ADMIN") &&
+                            <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
+                                <MDBIcon fab icon="fa-lg">
+                                    <FontAwesomeIcon icon={faClipboard} className="fa-lg text-danger me-2" />
+                                    Proje İşlemleri:
+                                </MDBIcon>
+                                <MDBCardText>
+                                    <Link to={"/project/create"} className="btn btn-primary">Yeni Bir Proje Oluştur</Link>
+                                </MDBCardText>
+                            </MDBListGroupItem>
+                        }
+                        {(role === "ADMIN") &&
+                            <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
+                                <MDBIcon fab icon="fa-lg">
+                                    <FontAwesomeIcon icon={faEnvelope} className="fa-lg text-warning me-2" />
+                                    İletişim:
+                                </MDBIcon>
+                                <MDBCardText>
+                                    <Link to={"/contact/message"} className="btn btn-warning">Mesajları Görüntüle</Link>
+                                </MDBCardText>
+                            </MDBListGroupItem>
+                        }
                         </MDBListGroup>
                     </MDBCardBody>
                     </MDBCard>

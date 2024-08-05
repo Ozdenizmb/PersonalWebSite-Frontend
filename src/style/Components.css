@@ -184,6 +184,65 @@
     padding: 10px;
 }
 
+#project-card .my-card.card_body {
+    padding: 30px;
+}
+
+#project-card .nav-link {
+    position: relative;
+    text-decoration: none;
+}
+
+#project-card .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease-out; /* Geçiş süresi ve hareket tipi */
+}
+
+.card-for-project {
+    margin-right: 20px;
+    display:flex;
+}
+
+.card-for-project .image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-for-project .image-container img {
+    height: 300px;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.card-for-project .image-container-for-company img {
+    width: 12rem;
+    height: 9rem;
+    object-fit: cover;
+}
+
+.card-for-project .image-container-for-application img {
+    width: 15rem;
+    height: 13rem;
+    object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+
 .footer {
     background-color: #f8f9fa;
     text-align: center;

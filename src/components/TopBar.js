@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { logoutSuccess } from '../redux/authActions';
 import skyForTopbar from '../images/sky.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faInfoCircle, faProjectDiagram, faPhone, faSignInAlt, faUserPlus, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faInfoCircle, faProjectDiagram, faPhone, faSignInAlt, faUserPlus, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import '../style/Components.css';
 import ProfileImage from './ProfileImage';
 

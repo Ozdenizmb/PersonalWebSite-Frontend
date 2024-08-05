@@ -13,7 +13,8 @@ const Input = (props) => {
                 onChange={props.onChangeVeriables}
                 defaultValue={props.defaultValue}
                 placeholder = {props.placeholder}
-                value={props.value}>
+                value={props.value}
+                ref={props.ref}>
             </input>
             
             <div className="invalid-feedback">
