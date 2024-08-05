@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faTwitter, faLinkedin, faInstagram, faJava, faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faTwitter, faLinkedin, faInstagram, faJava, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faHashtag, faCode, faDatabase, faBuildingColumns, faBriefcase, faUsers, faAward } from '@fortawesome/free-solid-svg-icons';
 import './About.css';
 import myProfilePhoto from '../../images/myProfilePhoto.jpg';
@@ -44,10 +44,31 @@ const About = () => {
                     </div>
             
                     <ul className="icons">
-                        <li><FontAwesomeIcon icon={faFacebookF} /></li>
-                        <li><FontAwesomeIcon icon={faTwitter} /></li>
-                        <li><FontAwesomeIcon icon={faLinkedin} /></li>
-                        <li><FontAwesomeIcon icon={faInstagram} /></li>
+                        <a href="https://github.com/Ozdenizmb" target="_blank">
+                            <li>
+                                <FontAwesomeIcon icon={faGithub} />
+                            </li>
+                        </a>
+                        <a href="https://x.com/ozdeniz_mb" target="_blank">
+                            <li>
+                                <FontAwesomeIcon icon={faTwitter} />
+                            </li>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCQG1TneF8TO1oC2WS6WLKeA" target="_blank">
+                            <li>
+                                <FontAwesomeIcon icon={faYoutube} />
+                            </li>
+                        </a>
+                        <a href="https://www.linkedin.com/in/mehmet-baran-%C3%B6zdeniz-465366262/" target="_blank">
+                            <li>
+                                <FontAwesomeIcon icon={faLinkedin} />
+                            </li>
+                        </a>
+                        <a href="https://www.instagram.com/ozdeniz.mb/" target="_blank">
+                            <li>
+                                <FontAwesomeIcon icon={faInstagram} />
+                            </li>
+                        </a>
                     </ul>
                     </div>
                 </div>
@@ -56,8 +77,8 @@ const About = () => {
                     <h1>Merhaba<span>!</span></h1>
                     <h2>İşte ben kimim ve ne yapıyorum</h2>
                     <div className="about-btns">
-                    <button type="button" className="btn btn-pink">CV</button>
-                    <button type="button" className="btn btn-white">Projeler</button>
+                    <a href="https://dxfkoq1rk21c6.cloudfront.net/Mehmet%20Baran%20%C3%96zdeniz%20-%20CV.pdf" target="_blank" type="button" className="btn btn-pink">CV</a>
+                    <Link to={"/projects"} type="button" className="btn btn-white">Projeler</Link>
                     </div>
             
                     <div className="about-para">
@@ -93,7 +114,7 @@ const About = () => {
                 </div>
 
                 <p class="lead mt-5">
-                    Bunların yanı sıra FlyWay, Hazelcast, Amazon S3, Cloudfront gibi daha birçok teknolojiyi kullanarak projeler üretmekte ve her geçen gün yeni teknolojiler öğrenerek kendimi geliştirmeye devam etmekteyim. Günümüzün uçsuz bucaksız veri yığını arasında "Her gün yeni bir bilgi" mottosu ile kariyerime devam etmekteyim.
+                    Bunların yanı sıra FlyWay, Hazelcast, Amazon S3, Cloudfront gibi daha birçok teknolojiyi kullanarak projeler üretmekte ve her geçen gün yeni teknolojiler öğrenerek kendimi geliştirmeye devam etmekteyim. Günümüzün uçsuz bucaksız veri yığını arasında "<strong>Her gün yeni bir bilgi</strong>" mottosu ile kariyerime devam etmekteyim.
                 </p>
             </section>
 

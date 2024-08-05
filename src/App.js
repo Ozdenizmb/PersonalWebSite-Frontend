@@ -14,6 +14,7 @@ import Login from './views/Login/Login';
 import UserUpdateProfile from './components/UserUpdateProfile';
 import Project from './views/Project/Project';
 import ProjectDetail from './views/ProjectDetail/ProjectDetail';
+import Footer from './components/Footer';
 
 const App = () => {
 
@@ -53,6 +54,8 @@ const App = () => {
 
           <Route path="/" element={<Navigate to="/home" />} />
         </Routes>
+
+        <Footer />
 
       </BrowserRouter>
 
