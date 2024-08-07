@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Input from './Input';
 import { getUserAndAdmin, updateAdmin, updateUser } from '../api/apiCalls';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Spinner from '../components/Spinner';
 import profile from '../images/profile.png';
@@ -14,6 +14,7 @@ const UserUpdateProfile = () => {
 
     const [user, setUser] = useState({});
 
+    const [id, setId] = useState();
     const [updatedFirstName, setUpdatedFirstName] = useState();
     const [updatedLastName, setUpdatedLastName] = useState();
     const [updatedBiography, setUpdatedBiography] = useState();
@@ -26,12 +27,12 @@ const UserUpdateProfile = () => {
 
     const [error, setError] = useState(null);
 
-    const { id, email, password, role } = useSelector((store) => ({
-        id: store.id,
-        email: store.email,
-        password: store.password,
+    const { storeEmail, role } = useSelector((store) => ({
+        storeEmail: store.email,
         role: store.role
     }));
+
+    const { email } = useParams();
 
     const pendingApiCall = useApiProgress('post','/api/v1/JobPosting');
     const dispatch = useDispatch();
@@ -45,6 +46,7 @@ const UserUpdateProfile = () => {
         try {
             const response = await getUserAndAdmin(email);
             setUser(response.data);
+            setId(response.data.id);
             setUpdatedFirstName(response.data.firstName);
             setUpdatedLastName(response.data.lastName);
             setUpdatedBiography(response.data.biography);
@@ -107,7 +109,6 @@ const UserUpdateProfile = () => {
         const body = {
             firstName: updatedFirstName,
             lastName: updatedLastName,
-            password,
             biography: updatedBiography,
             phoneNumber: updatedPhoneNumber,
             profession: updatedProfession,
@@ -121,7 +122,7 @@ const UserUpdateProfile = () => {
         try {
             let response;
 
-            if(role === "ADMIN") {
+            if(role === "ADMIN" && email === storeEmail) {
                 response = await updateAdmin(id, formData, adminKey);
             }
             else {

@@ -20,7 +20,6 @@ export const updateUserSuccess = ({ firstName, lastName, password, imageUrl }) =
         data : {
             firstName,
             lastName,
-            password,
             imageUrl
         }
     }

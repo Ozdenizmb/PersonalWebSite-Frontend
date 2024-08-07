@@ -14,7 +14,8 @@ const UserPage = () => {
     const [user, setUser] = useState({});
     const [userNotFound, setUserNotFound] = useState(false);
 
-    const { role } = useSelector((store) => ({
+    const { storeEmail, role } = useSelector((store) => ({
+        storeEmail: store.email,
         role: store.role
     }));
 
@@ -89,8 +90,12 @@ const UserPage = () => {
                         <p className="text-muted mb-1"><i>{user.profession || "Belirtilmedi"}</i></p>
                         <h4 className="text-muted mb-4">{user.firstName} {user.lastName}</h4>
                         <div className="d-flex justify-content-center mb-2">
-                        <Link to={`/profile/update/${email}`} className="btn btn-primary">Güncelle</Link>
-                        <button className="ms-1 btn btn-danger" onClick={onClickLogout}>Çıkış Yap</button>
+                        {(role === "ADMIN" || (role === "USER" && email===storeEmail)) &&
+                            <Link to={`/profile/update/${email}`} className="btn btn-primary">Güncelle</Link>
+                        }
+                        {((role === "ADMIN" && email===storeEmail) || (role === "USER" && email===storeEmail)) &&
+                            <button className="ms-1 btn btn-danger" onClick={onClickLogout}>Çıkış Yap</button>
+                        }
                         </div>
                     </MDBCardBody>
                     </MDBCard>
