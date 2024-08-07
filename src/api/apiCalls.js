@@ -30,6 +30,10 @@ export const getUserAndAdmin = (email) => {
     return axios.get(`/api/v1/users/get/email/${email}`);
 }
 
+export const getAllUsers = (page = 0, size = 3) => {
+    return axios.get(`/api/v1/users/get/user?page=${page}&size=${size}&sort=createdDate,DESC`);
+}
+
 export const setAuthorizationHeader = (userData) => {
     if(userData.isLoggedIn) {
         const { email, password } = userData;
