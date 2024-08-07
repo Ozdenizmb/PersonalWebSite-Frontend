@@ -17,6 +17,7 @@ import ProjectDetail from './views/ProjectDetail/ProjectDetail';
 import Footer from './components/Footer';
 import ProjectCreate from './components/ProjectCreate';
 import ContactMessage from './components/ContactMessage';
+import ProjectUpdate from './components/ProjectUpdate';
 
 const App = () => {
 
@@ -46,6 +47,12 @@ const App = () => {
 
           <Route path="/projects" element={<Project />} />
 
+          <Route path="/project/detail/:id" element={<ProjectDetail />} />
+
+          <Route path="/project/create" element={<ProjectCreate />} />
+
+          <Route path="/project/update/:id" element={<ProjectUpdate />} />
+
           <Route path="/contact" element={<Contact />} />
 
           <Route path="/contact/message" element={<ContactMessage />} />
@@ -53,10 +60,6 @@ const App = () => {
           <Route path="/profile/:email" element={<UserPage />} />
 
           <Route path="/profile/update/:email" element={<UserUpdateProfile />} />
-
-          <Route path="/project/detail/:id" element={<ProjectDetail />} />
-
-          <Route path="/project/create" element={<ProjectCreate />} />
 
           <Route path="/" element={<Navigate to="/home" />} />
         </Routes>

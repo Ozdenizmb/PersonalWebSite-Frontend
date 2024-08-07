@@ -67,6 +67,14 @@ export const getAllProjects = (pageNumber, pageSize, sort) => {
     return axios.get(`/api/v1/projects/get?page=${pageNumber}&size=${pageSize}&sort=${sort}`);
 }
 
+export const updateProject = (id, form) => {
+    return axios.put(`/api/v1/projects/update/${id}`, form);
+}
+
+export const deleteProject = (id) => {
+    return axios.delete(`/api/v1/projects/delete/${id}`);
+}
+
 export const createContact = (body) => {
     return axios.post("/api/v1/contacts/create", body);
 }
