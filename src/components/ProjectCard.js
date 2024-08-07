@@ -19,8 +19,6 @@ const ProjectCard = ({ project }) => {
         }
     }
 
-    let numberOfCard = "col-md-3"
-
     let cardType = (
         <div id="project-card">
             <div className="card h-100 border rounded-3 shadow my-card">
@@ -51,7 +49,7 @@ const ProjectCard = ({ project }) => {
     )
 
     return(
-        <div className={`mb-4 card_padding card-for-project ${numberOfCard}`}>
+        <div className={`mb-4 card_padding card-for-project col-xl-3 col-lg-4 col-md-6 col-sm-12`}>
             {cardType}
         </div>
     );

@@ -78,3 +78,11 @@ export const deleteProject = (id) => {
 export const createContact = (body) => {
     return axios.post("/api/v1/contacts/create", body);
 }
+
+export const getAllContacts = (pageNumber, pageSize, sort) => {
+    return axios.get(`/api/v1/contacts/getpage?page=${pageNumber}&size=${pageSize}&sort=${sort}`);
+}
+
+export const deleteContact = (id) => {
+    return axios.delete(`/api/v1/contacts/delete/${id}`);
+}

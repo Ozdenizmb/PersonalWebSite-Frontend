@@ -87,9 +87,9 @@ const About = () => {
                     </div>
                 </div>
             </div>
-            <section id="about_a" class="text-center py-2 my-5">
-                <div class="container">
-                    <div class="skills my-3">
+            <section id="about_a" className="text-center py-2 my-5">
+                <div className="container">
+                    <div className="skills my-3">
                         <div>
                             <FontAwesomeIcon icon={faJava} className="fa-5x text-danger"/>
                             <h3>Java</h3>
@@ -113,46 +113,46 @@ const About = () => {
                     </div>
                 </div>
 
-                <p class="lead mt-5">
+                <p className="lead mt-5">
                     Bunların yanı sıra FlyWay, Hazelcast, Amazon S3, Cloudfront gibi daha birçok teknolojiyi kullanarak projeler üretmekte ve her geçen gün yeni teknolojiler öğrenerek kendimi geliştirmeye devam etmekteyim. Günümüzün uçsuz bucaksız veri yığını arasında "<strong>Her gün yeni bir bilgi</strong>" mottosu ile kariyerime devam etmekteyim.
                 </p>
             </section>
 
-            <section id="about_b" class="text-center py-2 my-2">
-                <div class="container">
+            <section id="about_b" className="text-center py-2 my-2">
+                <div className="container">
 
-                    <h2 class="section-title">Profile</h2>
-                    <div class="border-bottom"></div>
+                    <h2 className="section-title">Profile</h2>
+                    <div className="border-bottom"></div>
 
                 </div>
-                <div class="profile">
-                    <div class="bg-light">
+                <div className="profile">
+                    <div className="bg-light">
                         <ul>
                             <li><FontAwesomeIcon icon={faBuildingColumns} className="fa-3x"/></li>
-                            <li class="title">Üniversite</li>
-                            <li class="number">Beykent Üniversitesi</li>
-                            <li class="title">2020-2024</li>
+                            <li className="title">Üniversite</li>
+                            <li className="number">Beykent Üniversitesi</li>
+                            <li className="title">2020-2024</li>
                         </ul>
                     </div>
-                    <div class="bg-medium">
+                    <div className="bg-medium">
                         <ul>
                             <li className="mt-3"><FontAwesomeIcon icon={faBriefcase} className="fa-3x"/></li>
-                            <li class="title">Kariyer</li>
-                            <li class="number">Software Engineering</li>
+                            <li className="title">Kariyer</li>
+                            <li className="number">Software Engineering</li>
                         </ul>
                     </div>
-                    <div class="bg-light">
+                    <div className="bg-light">
                         <ul>
                             <li className="mt-3"><FontAwesomeIcon icon={faUsers} className="fa-3x"/></li>
-                            <li class="title">Deneyim</li>
-                            <li class="number">{experienceYears}</li>
+                            <li className="title">Deneyim</li>
+                            <li className="number">{experienceYears}</li>
                         </ul>
                     </div>
-                    <div class="bg-medium">
+                    <div className="bg-medium">
                         <ul>
                             <li className="mt-3"><FontAwesomeIcon icon={faAward} className="fa-3x"/></li>
-                            <li class="title">Projeler</li>
-                            <li class="number">{projectCount}</li>
+                            <li className="title">Projeler</li>
+                            <li className="number">{projectCount}</li>
                         </ul>
                     </div>
                 </div>

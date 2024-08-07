@@ -1,8 +1,12 @@
 import React from "react";
+import ContactMessageFeed from "./ContactMessageFeed";
 
 const ContactMessage = () => {
     return(
-        <div>ContactMessage</div>
+        <div className="container mt-4">
+            <h1 className="text-center mb-5">Projeler</h1>
+            <ContactMessageFeed />
+        </div>
     );
 }
 

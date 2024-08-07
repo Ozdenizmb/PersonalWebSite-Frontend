@@ -1,45 +1,46 @@
 import React, { useEffect, useState } from "react";
-import { getAllProjects } from "../api/apiCalls";
+import { getAllContacts } from "../api/apiCalls";
 import { useApiProgress } from '../shared/ApiProgress';
 import Spinner from './Spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
-import ProjectCard from "./ProjectCard";
+import ContactMessageCard from './ContactMessageCard';
 
-const ProjectCardFeed = () => {
+const ContactMessageFeed = () => {
 
-    const [projects, setProjects] = useState([]);
+    const [messages, setMessages] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
     const [isLastPage, setIsLastPage] = useState(false);
     const [isThereData, setIsThereData] = useState();
 
-    const pendingApiCall = useApiProgress('get','/api/v1/projects/get?page=');
+    const pendingApiCall = useApiProgress('get','/api/v1/contacts/getpage?page=');
 
     const [error, setError] = useState(null);
 
-    const pageSize = 12;
+    const pageSize = 8;
     const sort = "createdDate,DESC";
 
-    const fetchProjects = async (pageNumber, pageSize, pageSort) => {
-        const previousProjects = [...projects];
+    const fetchMessages = async (pageNumber, pageSize, pageSort) => {
+        const previousMessages = [...messages];
 
         try {
-            const response = await getAllProjects(pageNumber, pageSize, pageSort);
+            const response = await getAllContacts(pageNumber, pageSize, pageSort);
             const data = response.data.content;
             setIsLastPage(response.data.last);
             setPageNumber(response.data.pageable.pageNumber);
             setIsThereData(response.data.totalElements);
-            const convertedProjects = data.map(project => ({
-                id: project.id,
-                name: project.name,
-                description: project.description,
-                technologies: project.technologies,
-                url: project.url,
-                imageUrl: project.imageUrl
+            const convertedMessages = data.map(message => ({
+                id: message.id,
+                name: message.name,
+                email: message.email,
+                subject: message.subject,
+                message: message.message,
+                createdDate: message.createdDate,
+                updatedDate: message.updatedDate
             }));
 
-            const combinedProjects = [...previousProjects, ...convertedProjects];
-            setProjects(combinedProjects);
+            const combinedMessages = [...previousMessages, ...convertedMessages];
+            setMessages(combinedMessages);
 
         } catch(error) {
             setError("Error "+ error.response.data.status + ": " + error.response.data.detail);
@@ -47,33 +48,33 @@ const ProjectCardFeed = () => {
     }
 
     useEffect(() => {
-        fetchProjects(pageNumber, pageSize, sort);
+        fetchMessages(pageNumber, pageSize, sort);
     }, []);
 
     const onClickLoadMoreCardButton = () => {
-        fetchProjects(pageNumber + 1, pageSize, sort);
+        fetchMessages(pageNumber + 1, pageSize, sort);
     }
 
     if((isThereData === 0 && !pendingApiCall) || error != null) {
         return (
           <div className="card h-100 border rounded-3 shadow d-flex align-items-center justify-content-center p-4">
               <FontAwesomeIcon icon={faExclamationCircle} className="rounded-circle bg-danger p-2 text-white me-2" />
-              <p className="m-0">Herhangi Bir Proje Bulunmamaktadır...</p>
+              <p className="m-0">Herhangi Bir Mesaj Bulunmamaktadır...</p>
           </div>
         );
     }
 
-    if(projects.length == 0) {
+    if(messages.length == 0) {
         return (
           <Spinner />
         );
     }
 
     return(
-        <div id="card-feed">
+        <div id="card-feed" className="d-flex flex-wrap">
             <div className="row">
-                {projects.map((projects, index) => (
-                    <ProjectCard key={index} project={projects} />
+                {messages.map((messages, index) => (
+                    <ContactMessageCard key={index} message={messages} />
                 ))}
                 <button className="btn btn-success" onClick={onClickLoadMoreCardButton} disabled={isLastPage}>
                     {pendingApiCall ? <span className="spinner-border spinner-border-sm"></span> : ''}
@@ -84,4 +85,4 @@ const ProjectCardFeed = () => {
     );
 }
 
-export default ProjectCardFeed;
+export default ContactMessageFeed;

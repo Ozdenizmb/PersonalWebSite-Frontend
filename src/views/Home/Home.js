@@ -86,8 +86,8 @@ const Home = () => {
               <div className="border"></div>
             </h3>
             <p className="text">Yazılım mühendisliği alanında kendimi geliştirmek ve yeni teknolojileri öğrenmek konusunda büyük bir tutkum var. Java ve web programlama bilgimi projelerimde uygulayarak deneyim kazanıyorum. Öğrenmeye açık yapım sayesinde hızla uyum sağlıyor ve sürekli kendimi geliştiriyorum. 2024 yılında İstanbul Beykent Üniversitesi Yazılım Mühendisliği bölümünden mezun olarak kariyer yolculuğuma başladım ve amacım, öğrendiklerimi pratik projelerle pekiştirip yazılım dünyasına değer katmak ve yenilikleri takip etmeye devam etmektir.</p>
-            <div class="d-grid gap-2">
-              <button class="btn btn-light mt-2" type="button" onClick={onClickButton}>Daha Fazla</button>
+            <div className="d-grid gap-2">
+              <button className="btn btn-light mt-2" type="button" onClick={onClickButton}>Daha Fazla</button>
             </div>
           </div>
 

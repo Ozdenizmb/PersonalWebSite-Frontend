@@ -28,10 +28,8 @@ const UserPage = () => {
 
     const loadUser = async (email) => {
         try {
-            console.log(email)
             const response = await getUserAndAdmin(email);
             setUser(response.data);
-            console.log(response.data);
         } catch(error) {
             setUserNotFound(true);
         }
