@@ -96,6 +96,10 @@ export const deleteLike = (userId, projectId) => {
     return axios.delete(`/api/v1/likes/delete?userId=${userId}&projectId=${projectId}`);
 }
 
+export const getAllProjectComments = (projectId, pageNumber, pageSize, pageSort) => {
+    return axios.get(`/api/v1/comments/get/project/${projectId}?page=${pageNumber}&size=${pageSize}&sort=${pageSort}`);
+}
+
 export const createContact = (body) => {
     return axios.post("/api/v1/contacts/create", body);
 }
