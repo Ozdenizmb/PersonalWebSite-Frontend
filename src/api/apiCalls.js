@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useId } from "react";
 
 export const signUpUser = (body) => {
     return axios.post("/api/v1/users/signup/user", body, {
@@ -77,6 +78,22 @@ export const updateProject = (id, form) => {
 
 export const deleteProject = (id) => {
     return axios.delete(`/api/v1/projects/delete/${id}`);
+}
+
+export const addLike = (body) => {
+    return axios.post("/api/v1/likes/add", body);
+}
+
+export const didILikeIt = (userId, projectId) => {
+    return axios.get(`/api/v1/likes/didILikeIt?userId=${userId}&projectId=${projectId}`);
+}
+
+export const getLikeCount = (projectId) => {
+    return axios.get(`/api/v1/likes/get/${projectId}`);
+}
+
+export const deleteLike = (userId, projectId) => {
+    return axios.delete(`/api/v1/likes/delete?userId=${userId}&projectId=${projectId}`);
 }
 
 export const createContact = (body) => {

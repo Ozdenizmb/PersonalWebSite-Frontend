@@ -39,5 +39,25 @@
   
 #project-detail .btn-primary:hover {
     background-color: #0056b3;
-  }
-  
+}
+
+#project-detail .project-likes .btn-like {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+#project-detail .project-likes .btn-like.liked {
+    color: #dc3545;
+}
+
+#project-detail .project-likes .btn-like:hover {
+    color: #0056b3;
+}
+
+#project-detail .project-likes .didILike {
+    color: #007bff;
+}

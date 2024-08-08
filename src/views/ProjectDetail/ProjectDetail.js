@@ -1,28 +1,89 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProject } from "../../api/apiCalls";
+import { addLike, deleteLike, didILikeIt, getLikeCount, getProject } from "../../api/apiCalls";
 import { useApiProgress } from "../../shared/ApiProgress";
+import ProjectComments from "../../components/ProjectComments";
 import './ProjectDetail.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faExternalLinkAlt, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import Spinner from "../../components/Spinner";
+import { useSelector } from "react-redux";
 
 const ProjectDetail = () => {
     const [project, setProject] = useState({});
     const { id } = useParams();
 
+    const [likesCount, setLikesCount] = useState(0);
+    const [didILike, setDidILike] = useState(false);
+
+    const { userId } = useSelector((store) => ({
+        userId: store.id
+    }));
+
     const pendingApiCall = useApiProgress('get','/api/v1/projects/get/id/');
+    const pendingApiCallDidILike = useApiProgress('get','/api/v1/likes/didILikeIt?userId=');
+    const pendingApiCallLikeCount = useApiProgress('get','/api/v1/likes/get/');
 
     useEffect(() => {
         loadProject();
+        didILikeThisProject();
+        likeCount();
     }, []);
 
     const loadProject = async () => {
         try {
-        const response = await getProject(id);
-        setProject(response.data);
+            const response = await getProject(id);
+            setProject(response.data);
         } catch (error) {
         }
+    };
+
+    const didILikeThisProject = async () => {
+        try {
+            const response = await didILikeIt(userId, id);
+            setDidILike(response.data);
+        }
+        catch(error) {
+
+        }
+    }
+
+    const likeCount = async () => {
+        try {
+            const response = await getLikeCount(id);
+            setLikesCount(response.data);
+        } catch(error) {
+
+        }
+    }
+
+    const handleLike = async (event) => {
+        event.preventDefault();
+
+        if(!didILike) {
+            const body = {
+                userId,
+                projectId: id
+            }
+
+            try {
+                await addLike(body);
+                setDidILike(true);
+                setLikesCount(likesCount + 1);
+            } catch(error) {
+    
+            }
+        }
+        else {
+            try {
+                await deleteLike(userId, id);
+                setDidILike(false);
+                setLikesCount(likesCount - 1);
+            } catch(error) {
+
+            }
+        }
+        
     };
 
     const formatDate = (dateString) => {
@@ -30,7 +91,7 @@ const ProjectDetail = () => {
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
 
-    if(pendingApiCall) {
+    if(pendingApiCall && pendingApiCallDidILike && pendingApiCallLikeCount) {
         return(
             <Spinner />
         );
@@ -61,14 +122,25 @@ const ProjectDetail = () => {
                             <p className="card-text">
                                 <strong>Tarih:</strong> {formatDate(project.createdDate)}
                             </p>
-                            <a href={project.url} className="btn btn-primary" target="_blank">
-                                <FontAwesomeIcon icon={faExternalLinkAlt} className="me-2" /> Projeye Git
-                            </a>
+                            <div className="mt-3">
+                                <div className="project-likes">
+                                    <button className={`btn btn-like ${didILike ? 'didILike' : ''}`} onClick={handleLike}>
+                                        <FontAwesomeIcon icon={faThumbsUp} className="me-1" /> {likesCount}
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="d-flex justify-content-end mt-5">
+                                <a href={project.url} className="btn btn-primary" target="_blank">
+                                    <FontAwesomeIcon icon={faExternalLinkAlt} className="me-2" /> Projeye Git
+                                </a>
+                            </div>
+                            
                         </div>
                     </div>
                     </div>
                 </div>
             </div>
+            <ProjectComments />
         </div>
   );
 };
