@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus, faCalendarCheck, faClipboard, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { logoutSuccess } from '../../redux/authActions';
 import { useDispatch, useSelector } from 'react-redux';
+import Footer from '../../components/Footer';
 
 const UserPage = () => {
 
@@ -215,6 +216,7 @@ const UserPage = () => {
                 </MDBCol>
             </MDBRow>
         </MDBContainer>
+        <Footer />
         </section>
     );
 }

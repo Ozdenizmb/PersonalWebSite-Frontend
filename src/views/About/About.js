@@ -6,6 +6,7 @@ import { faHashtag, faCode, faDatabase, faBuildingColumns, faBriefcase, faUsers,
 import './About.css';
 import myProfilePhoto from '../../images/myProfilePhoto.jpg';
 import { getProjectCount } from "../../api/apiCalls";
+import Footer from "../../components/Footer";
 
 const About = () => {
 
@@ -157,6 +158,9 @@ const About = () => {
                     </div>
                 </div>
             </section>
+
+            <Footer />
+            
         </div>
     );
 }

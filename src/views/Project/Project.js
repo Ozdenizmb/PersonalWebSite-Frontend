@@ -4,7 +4,7 @@ import UserList from '../../components/UserList';
 
 const Project = () => {
     return(
-        <div className="container mt-4">
+        <div className="container mt-4 mb-5">
             <div className="row">
                 <UserList />
             </div>
