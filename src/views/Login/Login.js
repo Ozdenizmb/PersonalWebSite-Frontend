@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginAdminHandler, loginUserHandler } from '../../redux/authActions';
 import { useNavigate } from 'react-router-dom';
+import { useApiProgress } from '../../shared/ApiProgress';
 import image1 from '../../images/SignUpAndLoginImage1.svg';
 import image2 from '../../images/SignUpAndLoginImage2.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,6 +18,9 @@ const Login = () => {
     const [error, setError] = useState(null);
 
     const [signUpMode, setSignUpMode] = useState(false);
+
+    const pendingApiCallUser = useApiProgress('get','/api/v1/users/login/user/');
+    const pendingApiCallAdmin = useApiProgress('get','/api/v1/users/login/admin/');
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -100,7 +104,10 @@ const Login = () => {
                         </i>
                         <input type="password" name="password" placeholder="Şifre" value={password} onChange={onChange} />
                         </div>
-                        <input type="submit" value="Giriş Yap" className="btn solid" onClick={onClickSubmitForUser} />
+                        <button className="btn solid" onClick={onClickSubmitForUser} disabled = {pendingApiCallUser}>
+                            {pendingApiCallUser ? <span className="spinner-border spinner-border-sm"></span> : ''}
+                            Giriş Yap
+                        </button>
                         <p className="social-text">Veya sosyal medya hesaplarınız ile giriş yapın</p>
                         <div className="social-media">
                             <a href="#" className="social-icon">
@@ -138,7 +145,10 @@ const Login = () => {
                             </i>
                             <input type="password" name="adminKey" placeholder="Admin Anahtarı" value={adminKey} onChange={onChange} />
                         </div>
-                        <input type="submit" className="btn-submit" value="Giriş Yap" onClick={onClickSubmitForAdmin} />
+                        <button className="btn-submit" onClick={onClickSubmitForAdmin} disabled = {pendingApiCallAdmin}>
+                            {pendingApiCallAdmin ? <span className="spinner-border spinner-border-sm"></span> : ''}
+                            Giriş Yap
+                        </button>
                         <p className="social-text">Veya sosyal medya hesaplarınız ile giriş yapın</p>
                         <div className="social-media">
                             <a href="#" className="social-icon">

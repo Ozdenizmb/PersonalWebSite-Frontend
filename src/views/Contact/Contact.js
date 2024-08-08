@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Contact.css';
 import { useSelector } from 'react-redux';
 import { createContact } from '../../api/apiCalls';
+import { useApiProgress } from '../../shared/ApiProgress';
 import { ToastContainer, toast } from 'react-toastify';
 
 const Contact = () => {
@@ -12,6 +13,8 @@ const Contact = () => {
     const [message, setMessage] = useState();
 
     const [error, setError] = useState(null);
+
+    const pendingApiCall = useApiProgress('post','/api/v1/contacts/create');
 
     const { role } = useSelector((store) => ({
         role: store.role
@@ -82,7 +85,10 @@ const Contact = () => {
                         <label htmlFor="message" className="form-label">Mesaj</label>
                         <textarea className="form-control" name="message" id="message" rows="3" placeholder="Mesajınızı girin" onChange={onChange} value={message} />
                         </div>
-                        <button type="submit" className="btn btn-primary" disabled={role !== "ADMIN" && role !== "USER"} onClick={onClick} >Gönder</button>
+                        <button type="submit" className="btn btn-primary" disabled={(role !== "ADMIN" && role !== "USER") || pendingApiCall} onClick={onClick} >
+                            {pendingApiCall ? <span className="spinner-border spinner-border-sm"></span> : ''}
+                            Gönder
+                        </button>
                         {(role !== "ADMIN" && role !== "USER") &&
                             <label className="alert alert-info ms-5">Mesajınızı iletmek için sisteme Giriş Yapmalısınız!</label>
                         }

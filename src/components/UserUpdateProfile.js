@@ -34,7 +34,9 @@ const UserUpdateProfile = () => {
 
     const { email } = useParams();
 
-    const pendingApiCall = useApiProgress('post','/api/v1/JobPosting');
+    const pendingApiCallUser = useApiProgress('put','/api/v1/users/update/user/');
+    const pendingApiCallAdmin = useApiProgress('put','/api/v1/users/update/admin/');
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -185,8 +187,8 @@ const UserUpdateProfile = () => {
                                     
                         <button className="btn btn-primary d-inline-flex"
                                 onClick={onClickSave}
-                                disabled = {pendingApiCall}>
-                            {pendingApiCall ? <span className="spinner-border spinner-border-sm"></span> : ''}
+                                disabled = {pendingApiCallUser || pendingApiCallAdmin}>
+                            {(pendingApiCallUser || pendingApiCallAdmin) && <span className="spinner-border spinner-border-sm"></span>}
                             <FontAwesomeIcon icon={faSave} className="pe-2 pt-1" />
                             Kaydet
                         </button>

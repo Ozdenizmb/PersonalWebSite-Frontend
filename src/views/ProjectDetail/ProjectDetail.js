@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProject } from "../../api/apiCalls";
+import { useApiProgress } from "../../shared/ApiProgress";
 import './ProjectDetail.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
-
+import Spinner from "../../components/Spinner";
 
 const ProjectDetail = () => {
     const [project, setProject] = useState({});
     const { id } = useParams();
+
+    const pendingApiCall = useApiProgress('get','/api/v1/projects/get/id/');
 
     useEffect(() => {
         loadProject();
@@ -19,7 +22,6 @@ const ProjectDetail = () => {
         const response = await getProject(id);
         setProject(response.data);
         } catch (error) {
-        // Error handling eklenebilir
         }
     };
 
@@ -27,6 +29,12 @@ const ProjectDetail = () => {
         const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
+
+    if(pendingApiCall) {
+        return(
+            <Spinner />
+        );
+    }
 
     return (
         <div id="project-detail">
