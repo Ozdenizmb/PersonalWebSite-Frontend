@@ -131,7 +131,9 @@ const UserUpdateProfile = () => {
                 response = await updateUser(id, formData);
             }
 
-            dispatch(updateUserSuccess(response.data));
+            if(!(role === "ADMIN" && email !== storeEmail)) {
+                dispatch(updateUserSuccess(response.data));
+            }
             navigate(`/profile/${email}`);
         } catch(error) {
             setError("Error "+ error.response.data.status + ": " + error.response.data.detail);

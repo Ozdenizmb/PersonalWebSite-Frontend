@@ -118,7 +118,7 @@ const UserPage = () => {
                             </MDBIcon>
                             <MDBCardText>{formatDate(user.updatedDate)}</MDBCardText>
                         </MDBListGroupItem>
-                        {(role === "ADMIN") &&
+                        {(role === "ADMIN" && email===storeEmail) &&
                             <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                                 <MDBIcon fab icon="fa-lg">
                                     <FontAwesomeIcon icon={faClipboard} className="fa-lg text-danger me-2" />
@@ -129,7 +129,7 @@ const UserPage = () => {
                                 </MDBCardText>
                             </MDBListGroupItem>
                         }
-                        {(role === "ADMIN") &&
+                        {(role === "ADMIN" && email===storeEmail) &&
                             <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                                 <MDBIcon fab icon="fa-lg">
                                     <FontAwesomeIcon icon={faEnvelope} className="fa-lg text-warning me-2" />
