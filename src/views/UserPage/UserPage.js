@@ -103,7 +103,7 @@ const UserPage = () => {
 
                     <MDBCard className="mb-4 mb-lg-0">
                     <MDBCardBody className="p-0">
-                        <MDBListGroup flush className="rounded-3">
+                        <MDBListGroup className="rounded-3">
                         <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                             <MDBIcon fas icon="fa-lg">  
                                 <FontAwesomeIcon icon={faCalendarPlus} className="fa-lg text-primary me-2" />

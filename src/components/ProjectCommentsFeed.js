@@ -5,21 +5,21 @@ import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import Spinner from "./Spinner";
 import ProjectCommentsCard from "./ProjectCommentsCard";
 import { getAllProjectComments } from "../api/apiCalls";
-import { useParams } from "react-router-dom";
+import ProjectCommentsCreate from "./ProjectCommentsCreate";
+import '../style/Components.css';
 
-const ProjectCommentsFeed = () => {
+const ProjectCommentsFeed = ({ id }) => {
 
     const [comments, setComments] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
     const [isLastPage, setIsLastPage] = useState(false);
     const [isThereData, setIsThereData] = useState();
 
-    const pendingApiCall = useApiProgress('get','/api/v1/comments/get?page=');
+    const pendingApiCall = useApiProgress('get','/api/v1/comments/get/project/');
 
     const [error, setError] = useState(null);
-    const { id } = useParams();
 
-    const pageSize = 12;
+    const pageSize = 3;
     const sort = "createdDate,DESC";
 
     const fetchProjects = async (pageNumber, pageSize, pageSort) => {
@@ -63,10 +63,27 @@ const ProjectCommentsFeed = () => {
 
     if((isThereData === 0 && !pendingApiCall) || error != null) {
         return (
-          <div className="card h-100 border rounded-3 shadow d-flex align-items-center justify-content-center p-4">
-              <FontAwesomeIcon icon={faExclamationCircle} className="rounded-circle bg-danger p-2 text-white me-2" />
-              <p className="m-0">Herhangi Bir Yorum Bulunmamaktadır...</p>
-          </div>
+            <div>
+                <div className="row">
+                    <div id="comments" className="bg-light mb-5 mt-5">
+                        <div className="container mb-5">
+                            <div className="row py-4">
+                                <div className="card mb-4">
+                                    <div className="card-body">
+                                        <h5 className="card-title">Yorumlar</h5>
+                                        <hr />
+                                        <div className="card border rounded-3 shadow d-flex align-items-center justify-content-center p-4 mb-5">
+                                            <FontAwesomeIcon icon={faExclamationCircle} className="rounded-circle bg-danger p-2 text-white me-2" />
+                                            <p className="m-0">Herhangi Bir Yorum Bulunmamaktadır...</p>
+                                        </div>
+                                        <ProjectCommentsCreate projectId={id} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         );
     }
 
@@ -79,13 +96,31 @@ const ProjectCommentsFeed = () => {
     return(
         <div id="card-feed">
             <div className="row">
-                {comments.map((comments, index) => (
-                    <ProjectCommentsCard key={index} comment={comments} />
-                ))}
-                <button className="btn btn-success" onClick={onClickLoadMoreCardButton} disabled={isLastPage}>
-                    {pendingApiCall ? <span className="spinner-border spinner-border-sm"></span> : ''}
-                    Daha Fazla Göster
-                </button>
+                <div id="comments" className="bg-light mb-5 mt-5">
+                    <div className="container mb-5">
+                        <div className="row py-4">
+
+                            <div className="card mb-4">
+                                <div className="card-body">
+
+                                    <h5 className="card-title">Yorumlar</h5>
+                                    <hr />
+
+                                        {comments.map((comments, index) => (
+                                        <ProjectCommentsCard key={index} comment={comments} />
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="d-grid">
+                            <button className="btn btn-success" onClick={onClickLoadMoreCardButton} disabled={isLastPage}>
+                                {pendingApiCall ? <span className="spinner-border spinner-border-sm"></span> : ''}
+                                    Daha Fazla Göster
+                            </button>
+                        </div>
+                    </div>
+                    <ProjectCommentsCreate projectId={id} />
+                </div>
             </div>
         </div>
     );

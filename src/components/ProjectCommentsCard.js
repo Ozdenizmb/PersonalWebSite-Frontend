@@ -1,11 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import defaultImage from '../images/profile.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import '../style/Components.css';
+import { useSelector } from "react-redux";
+import { deleteComment } from "../api/apiCalls";
 
 const ProjectCommentsCard = ({ comment }) => {
 
+    const { id } = useSelector((store) => ({
+        id: store.id
+    }));
+
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+    };
+
     const onClickDelete = async () => {
         try {
+            await deleteComment(comment.id);
             window.location.reload();
         } catch(error) {
 
@@ -13,31 +27,38 @@ const ProjectCommentsCard = ({ comment }) => {
     }
 
     let cardType = (
-        <div id="comment-card">
-            <div className="card h-100 border rounded-3 shadow my-card">
-                <Link to={`/comment/detail/${comment.id}`} className="card-link nav-link d-flex flex-column flex-grow-1">
-                    <div className="image-container">
-                    <img src={comment.imageUrl || defaultImage} className="card-img-top rounded-2 img-fluid" alt={comment.email} />
-                    </div>
-                    <div className="card-body d-flex flex-column flex-grow-1">
-                        <p className="card-text mb-2">{comment.firstName} {comment.lastName}</p>
-                        <p className="card-text mb-3 text-muted fst-italic">{comment.email} - {comment.role}</p>
-                        <hr className="my-2" />
-                        <p className="card-text">{comment.text}</p>
-                        <div className="d-flex justify-content-between mt-auto">
-                            <button className="btn btn-primary flex-grow-1 me-2">Görüntüle</button>
-                                    <Link to={`/comment/update/${comment.id}`} className="btn btn-success flex-grow-1 me-2">Güncelle</Link>
-                                    <Link  className="btn btn-danger flex-grow-1" onClick={onClickDelete}>Sil</Link>
-                        </div>
-                    </div>
-                </Link>
+
+        <blockquote className="border-bottom">
+            <div className="float-end">
+                <div className="btn-group d-flex align-items-center">
+                    {formatDate(comment.updatedDate)}
+                    {id === comment.userId && 
+                        <button className="btn btn-fix-css" onClick={onClickDelete}>
+                            <FontAwesomeIcon icon={faTrashAlt} className="rounded-circle bg-danger p-2 text-white ms-3" />
+                        </button>
+                        
+                    }
+                </div>
             </div>
-        </div>
-        
+            <div className="content">
+                <img src={comment.imageUrl || defaultImage} alt="profil" className="rounded-circle" />
+                <div className="text">
+                    <h6 className="mb-0">{comment.firstName} {comment.lastName}</h6>
+                    <div className="rating-wrap">
+                        {comment.email} - {comment.role}
+                    </div>
+                </div>
+            </div>
+            <div className="mt-3">
+                <p>
+                    {comment.text}
+                </p>
+            </div>
+        </blockquote>
     )
 
     return(
-        <div className={`mb-4 card_padding card-for-comment col-xl-3 col-lg-4 col-md-6 col-sm-12`}>
+        <div>
             {cardType}
         </div>
     );

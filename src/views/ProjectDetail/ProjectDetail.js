@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { addLike, deleteLike, didILikeIt, getLikeCount, getProject } from "../../api/apiCalls";
 import { useApiProgress } from "../../shared/ApiProgress";
-import ProjectComments from "../../components/ProjectComments";
+import ProjectCommentsFeed from "../../components/ProjectCommentsFeed";
 import './ProjectDetail.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
@@ -140,9 +140,9 @@ const ProjectDetail = () => {
                     </div>
                 </div>
             </div>
-            <ProjectComments />
+            <ProjectCommentsFeed id={id} />
         </div>
-  );
+    );
 };
 
 export default ProjectDetail;

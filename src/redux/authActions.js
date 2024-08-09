@@ -14,7 +14,7 @@ export const loginUserSuccess = (loginData) => {
     }
 }
 
-export const updateUserSuccess = ({ firstName, lastName, password, imageUrl }) => {
+export const updateUserSuccess = ({ firstName, lastName, imageUrl }) => {
     return {
         type : 'update-user-success',
         data : {
@@ -40,8 +40,8 @@ export const loginUserHandler = (creds) => {
         const loginState = {
             id : response.data.id,
             email : creds.email,
-            name : response.data.firstName,
-            surname : response.data.lastName,
+            firstName : response.data.firstName,
+            lastName : response.data.lastName,
             password : creds.password,
             imageUrl : response.data.imageUrl,
             role: response.data.role
@@ -67,8 +67,8 @@ export const loginAdminHandler = (creds) => {
         const loginState = {
             id : response.data.id,
             email : creds.email,
-            name : response.data.firstName,
-            surname : response.data.lastName,
+            firstName : response.data.firstName,
+            lastName : response.data.lastName,
             password : creds.password,
             imageUrl : response.data.imageUrl,
             role: response.data.role
