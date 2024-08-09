@@ -272,6 +272,10 @@
     flex: 1;
 }
 
+#card-feed .row {
+    width: 100%;
+}
+
 .footer {
     background-color: #f8f9fa;
     text-align: center;

@@ -8,8 +8,9 @@ import { deleteComment } from "../api/apiCalls";
 
 const ProjectCommentsCard = ({ comment }) => {
 
-    const { id } = useSelector((store) => ({
-        id: store.id
+    const { id, role } = useSelector((store) => ({
+        id: store.id,
+        role: store.role
     }));
 
     const formatDate = (dateString) => {
@@ -32,7 +33,7 @@ const ProjectCommentsCard = ({ comment }) => {
             <div className="float-end">
                 <div className="btn-group d-flex align-items-center">
                     {formatDate(comment.updatedDate)}
-                    {id === comment.userId && 
+                    {id === comment.userId || role === "ADMIN" && 
                         <button className="btn btn-fix-css" onClick={onClickDelete}>
                             <FontAwesomeIcon icon={faTrashAlt} className="rounded-circle bg-danger p-2 text-white ms-3" />
                         </button>

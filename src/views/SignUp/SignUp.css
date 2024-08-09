@@ -394,6 +394,12 @@ input {
   }
 }
 
+@media (max-width: 890px) {
+  #signup .container {
+    min-height: 150vh;
+  }
+}
+
 @media (max-width: 570px) {
   #signup form {
     padding: 0 1.5rem;
