@@ -16,8 +16,9 @@ const ProjectDetail = () => {
     const [likesCount, setLikesCount] = useState(0);
     const [didILike, setDidILike] = useState(false);
 
-    const { userId } = useSelector((store) => ({
-        userId: store.id
+    const { userId, role } = useSelector((store) => ({
+        userId: store.id,
+        role: store.role
     }));
 
     const pendingApiCall = useApiProgress('get','/api/v1/projects/get/id/');
@@ -122,13 +123,16 @@ const ProjectDetail = () => {
                             <p className="card-text">
                                 <strong>Tarih:</strong> {formatDate(project.createdDate)}
                             </p>
-                            <div className="mt-3">
-                                <div className="project-likes">
-                                    <button className={`btn btn-like ${didILike ? 'didILike' : ''}`} onClick={handleLike}>
-                                        <FontAwesomeIcon icon={faThumbsUp} className="me-1" /> {likesCount}
-                                    </button>
+                            {role &&
+                                <div className="mt-3">
+                                    <div className="project-likes">
+                                        <button className={`btn btn-like ${didILike ? 'didILike' : ''}`} onClick={handleLike}>
+                                            <FontAwesomeIcon icon={faThumbsUp} className="me-1" /> {likesCount}
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
+                            }
+                            
                             <div className="d-flex justify-content-end mt-5">
                                 <a href={project.url} className="btn btn-primary" target="_blank">
                                     <FontAwesomeIcon icon={faExternalLinkAlt} className="me-2" /> Projeye Git

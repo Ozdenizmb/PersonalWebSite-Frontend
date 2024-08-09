@@ -7,6 +7,7 @@ import ProjectCommentsCard from "./ProjectCommentsCard";
 import { getAllProjectComments } from "../api/apiCalls";
 import ProjectCommentsCreate from "./ProjectCommentsCreate";
 import '../style/Components.css';
+import { useSelector } from "react-redux";
 
 const ProjectCommentsFeed = ({ id }) => {
 
@@ -18,6 +19,10 @@ const ProjectCommentsFeed = ({ id }) => {
     const pendingApiCall = useApiProgress('get','/api/v1/comments/get/project/');
 
     const [error, setError] = useState(null);
+
+    const { role } = useSelector((store) => ({
+        role: store.role
+    }));
 
     const pageSize = 3;
     const sort = "createdDate,DESC";
@@ -76,7 +81,9 @@ const ProjectCommentsFeed = ({ id }) => {
                                             <FontAwesomeIcon icon={faExclamationCircle} className="rounded-circle bg-danger p-2 text-white me-2" />
                                             <p className="m-0">Herhangi Bir Yorum Bulunmamaktadır...</p>
                                         </div>
-                                        <ProjectCommentsCreate projectId={id} />
+                                        {role &&
+                                            <ProjectCommentsCreate projectId={id} />
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +126,9 @@ const ProjectCommentsFeed = ({ id }) => {
                             </button>
                         </div>
                     </div>
-                    <ProjectCommentsCreate projectId={id} />
+                    {role &&
+                        <ProjectCommentsCreate projectId={id} />
+                    }
                 </div>
             </div>
         </div>
