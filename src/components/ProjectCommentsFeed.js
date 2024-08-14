@@ -76,6 +76,9 @@ const ProjectCommentsFeed = ({ id }) => {
                                 <div className="card mb-4">
                                     <div className="card-body">
                                         <h5 className="card-title">Yorumlar</h5>
+                                        {!role &&
+                                            <p><i>Yorum yapabilmek için Giriş Yapmalısınız</i></p>
+                                        }
                                         <hr />
                                         <div className="card border rounded-3 shadow d-flex align-items-center justify-content-center p-4 mb-5">
                                             <FontAwesomeIcon icon={faExclamationCircle} className="rounded-circle bg-danger p-2 text-white me-2" />
@@ -111,6 +114,9 @@ const ProjectCommentsFeed = ({ id }) => {
                                 <div className="card-body">
 
                                     <h5 className="card-title">Yorumlar</h5>
+                                    {!role &&
+                                            <p><i>Yorum yapabilmek için Giriş Yapmalısınız</i></p>
+                                    }
                                     <hr />
 
                                         {comments.map((comments, index) => (

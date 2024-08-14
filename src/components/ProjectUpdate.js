@@ -17,6 +17,7 @@ const ProjectUpdate = () => {
     const [logoFile, setlogoFile] = useState();
     const [newImage, setNewImage] = useState();
     const [logoFileName, setLogoFileName] = useState('');
+    const [imageUrl, setImageUrl] = useState();
 
     const [error, setError] = useState(null);
 
@@ -38,6 +39,7 @@ const ProjectUpdate = () => {
             setUpdatedUrl(response.data.url);
             setUpdatedTechnologies(response.data.technologies);
             setLogoFileName(response.data.imageUrl ? response.data.imageUrl.split('/').pop() : '');
+            setImageUrl(response.data.imageUrl);
         } catch(error) {
 
         }
@@ -109,7 +111,7 @@ const ProjectUpdate = () => {
                     <img
                         className={"rounded-circle shadow"} 
                         width={200} height={200}
-                        alt={"permission"} src={newImage || ProjectPhoto}>
+                        alt={"permission"} src={newImage || imageUrl || ProjectPhoto}>
                     </img>
                 </div>
                 <div className="card-body ps-5 pe-5">
@@ -125,7 +127,7 @@ const ProjectUpdate = () => {
                     <div className="mb-3">
                         <label className="form-label">Resim</label>
                         <div className="d-flex justify-content-center align-items-center">
-                            <input name="image" label="Resim" onChangeVeriables={onChangeFile} type="file" className="form-control" />
+                            <input name="image" label="Resim" onChange={onChangeFile} type="file" className="form-control" />
                             {logoFileName && <p className="mt-2 ms-4 text-success">{logoFileName}</p>}
                         </div>
                         

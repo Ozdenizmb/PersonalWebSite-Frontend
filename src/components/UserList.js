@@ -35,9 +35,7 @@ const UserList = () => {
 
     const loadPage = async (pageNumber) => {
         try {
-            const response = await getAllUsers(pageNumber);
-            
-            response.then(response => {
+            await getAllUsers(pageNumber).then(response => {
                 setPage(response.data);
             });
         } catch(error) {

@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import Spinner from "../../components/Spinner";
 import { useSelector } from "react-redux";
+import { ToastContainer, toast } from 'react-toastify';
 
 const ProjectDetail = () => {
     const [project, setProject] = useState({});
@@ -45,7 +46,6 @@ const ProjectDetail = () => {
             setDidILike(response.data);
         }
         catch(error) {
-
         }
     }
 
@@ -54,7 +54,6 @@ const ProjectDetail = () => {
             const response = await getLikeCount(id);
             setLikesCount(response.data);
         } catch(error) {
-
         }
     }
 
@@ -72,7 +71,7 @@ const ProjectDetail = () => {
                 setDidILike(true);
                 setLikesCount(likesCount + 1);
             } catch(error) {
-    
+                toast.error("Beğenmek için Giriş Yapmalısınız!");
             }
         }
         else {
@@ -81,7 +80,7 @@ const ProjectDetail = () => {
                 setDidILike(false);
                 setLikesCount(likesCount - 1);
             } catch(error) {
-
+                toast.error("Beğenmek için Giriş Yapmalısınız!");
             }
         }
         
@@ -123,15 +122,13 @@ const ProjectDetail = () => {
                             <p className="card-text">
                                 <strong>Tarih:</strong> {formatDate(project.createdDate)}
                             </p>
-                            {role &&
-                                <div className="mt-3">
-                                    <div className="project-likes">
-                                        <button className={`btn btn-like ${didILike ? 'didILike' : ''}`} onClick={handleLike}>
-                                            <FontAwesomeIcon icon={faThumbsUp} className="me-1" /> {likesCount}
-                                        </button>
-                                    </div>
+                            <div className="mt-3">
+                                <div className="project-likes">
+                                    <button className={`btn btn-like ${didILike ? 'didILike' : ''}`} onClick={handleLike}>
+                                        <FontAwesomeIcon icon={faThumbsUp} className="me-1" /> {likesCount}
+                                    </button>
                                 </div>
-                            }
+                            </div>
                             
                             <div className="d-flex justify-content-end mt-5">
                                 <a href={project.url} className="btn btn-primary" target="_blank">
@@ -145,6 +142,7 @@ const ProjectDetail = () => {
                 </div>
             </div>
             <ProjectCommentsFeed id={id} />
+            <ToastContainer />
         </div>
     );
 };
