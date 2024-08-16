@@ -1,8 +1,9 @@
 import axios from "axios";
-import { useId } from "react";
+
+const API_BASE_URL = '<YOUR_DOMAIN_NAME_AND_BACKEND_PORT_ADDRESS>';
 
 export const signUpUser = (body) => {
-    return axios.post("/api/v1/users/signup/user", body, {
+    return axios.post(`${API_BASE_URL}/api/v1/users/signup/user`, body, {
         headers: {
             'Content-Type': 'multipart/form-data'
         }
@@ -11,11 +12,11 @@ export const signUpUser = (body) => {
 
 export const loginUser = creds => {
     const { email, password } = creds;
-    return axios.get(`/api/v1/users/login/user/${email}?password=${password}`);
+    return axios.get(`${API_BASE_URL}/api/v1/users/login/user/${email}?password=${password}`);
 }
 
 export const signUpAdmin = (body, adminKey) => {
-    return axios.post("/api/v1/users/signup/admin", body, {headers: {key: adminKey}}, {
+    return axios.post(`${API_BASE_URL}/api/v1/users/signup/admin`, body, {headers: {key: adminKey}}, {
         headers: {
             'Content-Type': 'multipart/form-data'
         }
@@ -24,15 +25,15 @@ export const signUpAdmin = (body, adminKey) => {
 
 export const loginAdmin = (creds) => {
     const { email, password, adminKey } = creds;
-    return axios.get(`/api/v1/users/login/admin/${email}?password=${password}`, {headers: {key: adminKey}});
+    return axios.get(`${API_BASE_URL}/api/v1/users/login/admin/${email}?password=${password}`, {headers: {key: adminKey}});
 }
 
 export const getUserAndAdmin = (email) => {
-    return axios.get(`/api/v1/users/get/email/${email}`);
+    return axios.get(`${API_BASE_URL}/api/v1/users/get/email/${email}`);
 }
 
 export const getAllUsers = (page = 0, size = 3) => {
-    return axios.get(`/api/v1/users/get/user?page=${page}&size=${size}&sort=createdDate,DESC`);
+    return axios.get(`${API_BASE_URL}/api/v1/users/get/user?page=${page}&size=${size}&sort=createdDate,DESC`);
 }
 
 export const setAuthorizationHeader = (userData) => {
@@ -49,73 +50,73 @@ export const setAuthorizationHeader = (userData) => {
 };
 
 export const updateUser = (id, form) => {
-    return axios.put(`/api/v1/users/update/user/${id}`, form);
+    return axios.put(`${API_BASE_URL}/api/v1/users/update/user/${id}`, form);
 }
 
 export const updateAdmin = (id, form, adminKey) => {
-    return axios.put(`/api/v1/users/update/admin/${id}`, form, {headers: {key: adminKey}});
+    return axios.put(`${API_BASE_URL}/api/v1/users/update/admin/${id}`, form, {headers: {key: adminKey}});
 }
 
 export const createProject = (form) => {
-    return axios.post("/api/v1/projects/create", form);
+    return axios.post(`${API_BASE_URL}/api/v1/projects/create`, form);
 }
 
 export const getProject = (id) => {
-    return axios.get(`/api/v1/projects/get/id/${id}`);
+    return axios.get(`${API_BASE_URL}/api/v1/projects/get/id/${id}`);
 }
 
 export const getProjectCount = () => {
-    return axios.get("/api/v1/projects/get/count");
+    return axios.get(`${API_BASE_URL}/api/v1/projects/get/count`);
 }
 
 export const getAllProjects = (pageNumber, pageSize, sort) => {
-    return axios.get(`/api/v1/projects/get?page=${pageNumber}&size=${pageSize}&sort=${sort}`);
+    return axios.get(`${API_BASE_URL}/api/v1/projects/get?page=${pageNumber}&size=${pageSize}&sort=${sort}`);
 }
 
 export const updateProject = (id, form) => {
-    return axios.put(`/api/v1/projects/update/${id}`, form);
+    return axios.put(`${API_BASE_URL}/api/v1/projects/update/${id}`, form);
 }
 
 export const deleteProject = (id) => {
-    return axios.delete(`/api/v1/projects/delete/${id}`);
+    return axios.delete(`${API_BASE_URL}/api/v1/projects/delete/${id}`);
 }
 
 export const addLike = (body) => {
-    return axios.post("/api/v1/likes/add", body);
+    return axios.post(`${API_BASE_URL}/api/v1/likes/add`, body);
 }
 
 export const didILikeIt = (userId, projectId) => {
-    return axios.get(`/api/v1/likes/didILikeIt?userId=${userId}&projectId=${projectId}`);
+    return axios.get(`${API_BASE_URL}/api/v1/likes/didILikeIt?userId=${userId}&projectId=${projectId}`);
 }
 
 export const getLikeCount = (projectId) => {
-    return axios.get(`/api/v1/likes/get/${projectId}`);
+    return axios.get(`${API_BASE_URL}/api/v1/likes/get/${projectId}`);
 }
 
 export const deleteLike = (userId, projectId) => {
-    return axios.delete(`/api/v1/likes/delete?userId=${userId}&projectId=${projectId}`);
+    return axios.delete(`${API_BASE_URL}/api/v1/likes/delete?userId=${userId}&projectId=${projectId}`);
 }
 
 export const createComment = (body) => {
-    return axios.post("/api/v1/comments/create", body);
+    return axios.post(`${API_BASE_URL}/api/v1/comments/create`, body);
 }
 
 export const getAllProjectComments = (projectId, pageNumber, pageSize, pageSort) => {
-    return axios.get(`/api/v1/comments/get/project/${projectId}?page=${pageNumber}&size=${pageSize}&sort=${pageSort}`);
+    return axios.get(`${API_BASE_URL}/api/v1/comments/get/project/${projectId}?page=${pageNumber}&size=${pageSize}&sort=${pageSort}`);
 }
 
 export const deleteComment = (id) => {
-    return axios.delete(`/api/v1/comments/delete/${id}`);
+    return axios.delete(`${API_BASE_URL}/api/v1/comments/delete/${id}`);
 }
 
 export const createContact = (body) => {
-    return axios.post("/api/v1/contacts/create", body);
+    return axios.post(`${API_BASE_URL}/api/v1/contacts/create`, body);
 }
 
 export const getAllContacts = (pageNumber, pageSize, sort) => {
-    return axios.get(`/api/v1/contacts/getpage?page=${pageNumber}&size=${pageSize}&sort=${sort}`);
+    return axios.get(`${API_BASE_URL}/api/v1/contacts/getpage?page=${pageNumber}&size=${pageSize}&sort=${sort}`);
 }
 
 export const deleteContact = (id) => {
-    return axios.delete(`/api/v1/contacts/delete/${id}`);
+    return axios.delete(`${API_BASE_URL}/api/v1/contacts/delete/${id}`);
 }

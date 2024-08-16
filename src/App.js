@@ -1,7 +1,7 @@
 // WRITTEN BY MEHMET BARAN ÖZDENİZ @ozdeniz.mb
 
 import React from 'react';
-import { Route, Routes, Navigate, BrowserRouter } from 'react-router-dom'
+import { Route, Routes, Navigate, HashRouter } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 
 import Home from './views/Home/Home';
@@ -29,7 +29,7 @@ const App = () => {
   return(
     <div>
 
-      <BrowserRouter>
+      <HashRouter>
 
         <TopBar />
 
@@ -63,7 +63,7 @@ const App = () => {
           <Route path="/" element={<Navigate to="/home" />} />
         </Routes>
 
-      </BrowserRouter>
+      </HashRouter>
 
     </div>
   );
