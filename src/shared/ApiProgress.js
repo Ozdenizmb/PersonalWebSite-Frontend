@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react';
 import axios from "axios";
 
 export const useApiProgress = (apiMethod ,apiPath, strictPath) => {
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const [pendingApiCall, setPendingApiCall] = useState(false);
+
+    apiPath = API_BASE_URL + apiPath;
 
     useEffect(() => {
 
