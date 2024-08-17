@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { logoutSuccess } from '../redux/authActions';
-import skyForTopbar from '../images/sky.png';
+import skyForTopbar from '../images/sky.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faInfoCircle, faProjectDiagram, faPhone, faSignInAlt, faUserPlus, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import '../style/Components.css';

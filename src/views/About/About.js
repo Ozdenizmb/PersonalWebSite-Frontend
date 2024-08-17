@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faTwitter, faLinkedin, faInstagram, faJava, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faHashtag, faCode, faDatabase, faBuildingColumns, faBriefcase, faUsers, faAward } from '@fortawesome/free-solid-svg-icons';
 import './About.css';
-import myProfilePhoto from '../../images/myProfilePhoto.jpg';
+import myProfilePhoto from '../../images/myProfilePhoto.webp';
 import { getProjectCount } from "../../api/apiCalls";
 import Footer from "../../components/Footer";
 
