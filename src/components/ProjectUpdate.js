@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useApiProgress } from "../shared/ApiProgress";
-import { ToastContainer, toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 import ProjectPhoto from '../images/ProjectPhoto.png'
@@ -149,7 +148,6 @@ const ProjectUpdate = () => {
 
                 </div>
             </div>
-            <ToastContainer />
         </div>
     );
 }

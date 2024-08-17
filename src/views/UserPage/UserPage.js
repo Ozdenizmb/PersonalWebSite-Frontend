@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBProgress, MDBProgressBar, MDBIcon, MDBListGroup, MDBListGroupItem } from 'mdb-react-ui-kit';
+import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBIcon, MDBListGroup, MDBListGroupItem } from 'mdb-react-ui-kit';
 import { getUserAndAdmin } from '../../api/apiCalls';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Spinner from '../../components/Spinner';

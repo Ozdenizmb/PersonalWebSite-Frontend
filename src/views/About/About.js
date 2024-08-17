@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faTwitter, faLinkedin, faInstagram, faJava, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faHashtag, faCode, faDatabase, faBuildingColumns, faBriefcase, faUsers, faAward } from '@fortawesome/free-solid-svg-icons';

@@ -35,7 +35,6 @@ export const signUpUserHandler = (user) => {
 export const loginUserHandler = (creds) => {
     return async function(dispatch) {
         const response = await loginUser(creds);
-        console.log(response.data);
 
         const loginState = {
             id : response.data.id,
@@ -62,7 +61,6 @@ export const signUpAdminHandler = (admin, adminKey) => {
 export const loginAdminHandler = (creds) => {
     return async function(dispatch) {
         const response = await loginAdmin(creds);
-        console.log(response.data);
 
         const loginState = {
             id : response.data.id,
