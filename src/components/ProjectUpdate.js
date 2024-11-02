@@ -9,6 +9,8 @@ import { getProject, updateProject } from "../api/apiCalls";
 
 const ProjectUpdate = () => {
 
+    const IMAGE_PATH = process.env.REACT_APP_IMAGE_PATH;
+
     const [updatedName, setUpdatedName] = useState();
     const [updatedDescription, setUpdatedDescription] = useState();
     const [updatedUrl, setUpdatedUrl] = useState();
@@ -110,7 +112,7 @@ const ProjectUpdate = () => {
                     <img
                         className={"rounded-circle shadow"} 
                         width={200} height={200}
-                        alt={"permission"} src={newImage || imageUrl || ProjectPhoto}>
+                        alt={"permission"} src={newImage || IMAGE_PATH+imageUrl || ProjectPhoto}>
                     </img>
                 </div>
                 <div className="card-body ps-5 pe-5">

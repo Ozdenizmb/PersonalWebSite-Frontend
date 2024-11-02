@@ -11,6 +11,9 @@ import { useSelector } from "react-redux";
 import { ToastContainer, toast } from 'react-toastify';
 
 const ProjectDetail = () => {
+
+    const IMAGE_PATH = process.env.REACT_APP_IMAGE_PATH;
+    
     const [project, setProject] = useState({});
     const { id } = useParams();
 
@@ -104,7 +107,7 @@ const ProjectDetail = () => {
                     <div className="row no-gutters">
                     <div className="col-md-4">
                         <img
-                        src={project.imageUrl}
+                        src={IMAGE_PATH + project.imageUrl}
                         className="card-img project-img"
                         alt={project.name}
                         />

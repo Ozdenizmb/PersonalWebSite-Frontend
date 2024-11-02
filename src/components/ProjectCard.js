@@ -6,6 +6,8 @@ import { deleteProject } from "../api/apiCalls";
 
 const ProjectCard = ({ project }) => {
 
+    const IMAGE_PATH = process.env.REACT_APP_IMAGE_PATH;
+
     const { role } = useSelector(store => ({
         role: store.role,
     }));
@@ -24,7 +26,7 @@ const ProjectCard = ({ project }) => {
             <div className="card h-100 border rounded-3 shadow my-card">
                 <Link to={`/project/detail/${project.id}`} className="card-link nav-link d-flex flex-column flex-grow-1">
                     <div className="image-container">
-                    <img src={project.imageUrl} className="card-img-top rounded-2 img-fluid" alt={project.name} />
+                    <img src={IMAGE_PATH + project.imageUrl} className="card-img-top rounded-2 img-fluid" alt={project.name} />
                     </div>
                     <div className="card-body d-flex flex-column flex-grow-1">
                         <h5 className="card-title">{project.name}</h5>

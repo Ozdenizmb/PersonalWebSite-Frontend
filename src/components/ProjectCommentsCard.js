@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 
 const ProjectCommentsCard = ({ comment }) => {
 
+    const IMAGE_PATH = process.env.REACT_APP_IMAGE_PATH;
+
     const { id, role } = useSelector((store) => ({
         id: store.id,
         role: store.role
@@ -49,7 +51,7 @@ const ProjectCommentsCard = ({ comment }) => {
                 </div>
             </div>
             <div className="content" onClick={onClickCard} style={{cursor: "pointer"}}>
-                <img src={comment.imageUrl || defaultImage} alt="profil" className="rounded-circle" />
+                <img src={IMAGE_PATH+comment.imageUrl || defaultImage} alt="profil" className="rounded-circle" />
                 <div className="text">
                     <h6 className="mb-0">{comment.firstName} {comment.lastName}</h6>
                     <div className="rating-wrap">

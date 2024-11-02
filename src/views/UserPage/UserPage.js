@@ -12,6 +12,8 @@ import Footer from '../../components/Footer';
 
 const UserPage = () => {
 
+    const IMAGE_PATH = process.env.REACT_APP_IMAGE_PATH;
+
     const [user, setUser] = useState({});
     const [userNotFound, setUserNotFound] = useState(false);
 
@@ -83,7 +85,7 @@ const UserPage = () => {
                     <MDBCard className="mb-4">
                     <MDBCardBody className="text-center">
                         <MDBCardImage
-                        src={user.imageUrl || profile}
+                        src={IMAGE_PATH+user.imageUrl || profile}
                         alt={email}
                         className="rounded-circle"
                         style={{ width: '150px' }}

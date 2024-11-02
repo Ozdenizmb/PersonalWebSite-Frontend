@@ -10,6 +10,8 @@ import Footer from "../../components/Footer";
 
 const About = () => {
 
+    const FILE_PATH = process.env.REACT_APP_IMAGE_PATH;
+
     const [projectCount, setProjectCount] = useState();
 
     const currentYear = new Date().getFullYear();
@@ -78,7 +80,7 @@ const About = () => {
                     <h1>Merhaba<span>!</span></h1>
                     <h2>İşte ben kimim ve ne yapıyorum</h2>
                     <div className="about-btns">
-                    <a href="https://dxfkoq1rk21c6.cloudfront.net/Mehmet%20Baran%20%C3%96zdeniz%20-%20CV.pdf" target="_blank" type="button" className="btn btn-pink">CV</a>
+                    <a href={FILE_PATH + `51dd040d9e8c4bf09c329e8af96badea.pdf`} target="_blank" type="button" className="btn btn-pink">CV</a>
                     <Link to={"/projects"} type="button" className="btn btn-white">Projeler</Link>
                     </div>
             

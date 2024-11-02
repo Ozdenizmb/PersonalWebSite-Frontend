@@ -9,3 +9,4 @@ https://github.com/Ozdenizmb/PersonalWebSite-Backend
 <h3>Create a file named .env</h3>
 
 <p>REACT_APP_API_BASE_URL=&lt;YOUR_DOMAIN_NAME_AND_BACKEND_PORT_ADDRESS&gt;</p>
+<p>REACT_APP_IMAGE_PATH=&lt;YOUR_REACT_APP_IMAGE_PATH&gt;</p>

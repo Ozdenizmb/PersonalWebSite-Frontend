@@ -3,6 +3,8 @@ import defaultImage from '../images/profile.png';
 
 const ProfileImage = ({ email, width, height, tempImage, imageCss }) => {
 
+    const IMAGE_PATH = process.env.REACT_APP_IMAGE_PATH;
+
     let imageSource = defaultImage;
 
     const onErrorImage = (event) => {
@@ -14,7 +16,7 @@ const ProfileImage = ({ email, width, height, tempImage, imageCss }) => {
             className={"rounded-circle " + imageCss} 
             width={width} height={height}
             alt={email + " profile"}
-            src={ tempImage || imageSource}
+            src={ IMAGE_PATH + tempImage || imageSource}
             onError = {onErrorImage}>
         </img>
     );

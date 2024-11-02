@@ -12,6 +12,8 @@ import { updateUserSuccess } from '../redux/authActions';
 
 const UserUpdateProfile = () => {
 
+    const IMAGE_PATH = process.env.REACT_APP_IMAGE_PATH;
+
     const [user, setUser] = useState({});
 
     const [id, setId] = useState();
@@ -163,7 +165,7 @@ const UserUpdateProfile = () => {
                     <img
                         className={"rounded-circle shadow"} 
                         width={200} height={200}
-                        alt={user.email} src={newImage || user.imageUrl || profile}>
+                        alt={user.email} src={newImage || IMAGE_PATH+user.imageUrl || profile}>
                     </img>
                 </div>
                 <div className="card-body ps-5 pe-5">
