@@ -17,6 +17,7 @@ import ProjectDetail from './views/ProjectDetail/ProjectDetail';
 import ProjectCreate from './components/ProjectCreate';
 import ContactMessage from './components/ContactMessage';
 import ProjectUpdate from './components/ProjectUpdate';
+import Privacy from './views/Privacy/Privacy';
 
 const App = () => {
 
@@ -59,6 +60,8 @@ const App = () => {
           <Route path="/profile/:email" element={<UserPage />} />
 
           <Route path="/profile/update/:email" element={<UserUpdateProfile />} />
+
+          <Route path="/privacy-policy" element={<Privacy />} />
 
           <Route path="/" element={<Navigate to="/home" />} />
         </Routes>
